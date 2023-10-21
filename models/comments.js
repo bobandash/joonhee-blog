@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 const {DateTime} = require('luxon');
 
 const comments = new Schema({
+  post: {
+    type: Schema.Types.ObjectId,
+    ref: "Posts"
+  },
   username: {
     type: String,
     default: "Anonymous Poster"

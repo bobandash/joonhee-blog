@@ -1,0 +1,25 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const luxon = require('luxon');
+
+const Post = new Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  subscribed: {
+    type: Boolean,
+    default: true,
+  },
+  timestamp: {
+    type: Date,
+    default: new Date()
+  }
+})
+
+Post.virtual("dateFormatted").get(function(){
+  this.timestamp.toLocaleString(DateTime.DATETIME_MED)
+})
+
+
+module.exports = mongoose.model("Posts", Post);

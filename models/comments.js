@@ -5,7 +5,8 @@ const {DateTime} = require('luxon');
 const Comment = new Schema({
   post: {
     type: Schema.Types.ObjectId,
-    ref: "Posts"
+    ref: "Post",
+    required: true,
   },
   username: {
     type: String,
@@ -25,4 +26,4 @@ Comment.virtual("dateFormatted").get(function(){
   this.timestamp.toLocaleString(DateTime.DATETIME_MED)
 })
 
-module.exports = mongoose.model("Comments", Comment);
+module.exports = mongoose.model("Comment", Comment);

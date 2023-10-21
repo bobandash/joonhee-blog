@@ -26,4 +26,4 @@ Post.virtual("dateFormatted").get(function(){
 })
 
 
-module.exports = mongoose.model("Posts", Post);
+module.exports = mongoose.model("Post", Post);

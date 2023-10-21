@@ -21,7 +21,7 @@ const Comment = new Schema({
   }
 })
 
-comments.virtual("dateFormatted").get(function(){
+Comment.virtual("dateFormatted").get(function(){
   this.timestamp.toLocaleString(DateTime.DATETIME_MED)
 })
 

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const {DateTime} = require('luxon');
 const validator = require('validator')
 
-const mailingList = new Schema({
+const MailingList = new Schema({
   email: {
     type: String,
     default: "Anonymous Poster",
@@ -19,4 +19,4 @@ const mailingList = new Schema({
   }
 })
 
-module.exports = mongoose.model("Mailing List", mailingList);
+module.exports = mongoose.model("Mailing List", MailingList);

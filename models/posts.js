@@ -11,6 +11,10 @@ const Post = new Schema({
     type: Schema.Types.Mixed,
     required: true,
   },
+  summary: {
+    type: String,
+    required: true
+  },
   timestamp: {
     type: Date,
     default: new Date()

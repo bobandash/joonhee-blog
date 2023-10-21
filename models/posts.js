@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const luxon = require('luxon');
+const {DateTime} = require('luxon');
 
 const Post = new Schema({
   title: {
     type: String,
     required: true,
   },
-  subscribed: {
-    type: Boolean,
-    default: true,
+  content: {
+    type: Schema.Types.Mixed,
+    required: true,
   },
   timestamp: {
     type: Date,

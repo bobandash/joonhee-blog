@@ -19,11 +19,13 @@ const Comment = new Schema({
   timestamp: {
     type: Date,
     default: new Date()
-  }
-})
+  },
+}, {
+  toJSON: {virtuals: true}
+});
 
 Comment.virtual("dateFormatted").get(function(){
-  this.timestamp.toLocaleString(DateTime.DATETIME_MED)
+  return this.timestamp.toLocaleString(DateTime.DATETIME_MED)
 })
 
 module.exports = mongoose.model("Comment", Comment);

@@ -22,8 +22,9 @@ const Post = new Schema({
 })
 
 Post.virtual("dateFormatted").get(function(){
-  this.timestamp.toLocaleString(DateTime.DATETIME_MED)
+  return this.timestamp.toLocaleString(DateTime.DATETIME_MED)
 })
 
+Post.set('toJSON', {virtuals: true})
 
 module.exports = mongoose.model("Post", Post);

@@ -20,9 +20,9 @@ async function populateDB(){
 }
 
 async function addAdmin(){
-  const hashedPassword = await bcrypt.hash("tempPassword", 10);
+  const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
   const newAdmin = new Admin({
-    email: "joonhee@gmail.com",
+    email: process.env.ADMIN_EMAIL,
     password: hashedPassword
   })
   await newAdmin.save();

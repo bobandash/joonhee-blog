@@ -5,7 +5,7 @@ const MailingList = require('./models/mailing-list');
 const Post = require('./models/posts');
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
-const db_connect = require('./utils/db.js');
+const db_connect = require('./server/utils/db.js');
 const mongoose = require('mongoose');
 
 

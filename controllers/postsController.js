@@ -75,7 +75,7 @@ exports.edit_individual_post = [
     .escape(),
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req).mapped();
-    if(errors.size === 0){
+    if(Object.keys(errors).length > 0 === 0){
       res.json(errors);
     } else {
       const postId = req.params.postId;

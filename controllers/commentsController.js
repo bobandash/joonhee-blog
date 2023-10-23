@@ -31,7 +31,7 @@ exports.create_individual_comment = [
     .escape(),
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req).mapped();
-    if(errors.size === 0){
+    if(Object.keys(errors).length > 0){
       res.json(errors);
     } else {
       const filter = new Filter();

@@ -11,7 +11,7 @@ exports.subscribe_mailing_list = [
     .escape(),
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req).mapped();
-    if(errors.size > 0){
+    if(Object.keys(errors).length > 0){
       res.json(errors);
     } else {
       // if email exists, then update subscribed status

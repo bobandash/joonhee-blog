@@ -1,0 +1,6 @@
+.meme {
+  min-height: 100vh;
+  background: url(../../assets/TWICE.jpg); 
+  background-repeat: no-repeat;
+  background-size: cover;
+}

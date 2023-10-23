@@ -1,0 +1,44 @@
+.latest-posts {
+  background-color: #f6f6f6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0px 30px 0px;
+}
+
+
+.container > div:nth-child(n + 3) {
+  margin-top: 40px;
+}
+
+.container > div:nth-child(2n + 1){
+  margin-left: auto;
+}
+
+.container > div:nth-child(2n + 2){
+  margin-right: auto;
+}
+
+.section-header {
+  font-size: 36px;
+  border-bottom: 3px solid black;
+  margin-top: 0px;
+}
+
+@media screen and (min-width: 800px) {
+  .container {
+    padding-bottom: 60px;
+  }
+
+  .container > div:nth-child(n + 3) {
+    margin-top: 60px;
+  }
+
+  .section-header {
+    font-size: 48px;
+    margin-top: 20px;
+  }
+}

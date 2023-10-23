@@ -1,0 +1,25 @@
+.section-background {
+  background-color: lightcoral;
+  min-height: 15vh;
+  display: flex;
+  align-items: center;
+
+}
+
+.email-newsletter {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.email-newsletter label {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+

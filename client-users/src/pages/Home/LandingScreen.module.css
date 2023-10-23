@@ -1,0 +1,17 @@
+.container {
+  min-height: 90vh;
+  background-color: lightgray;
+  position: relative;
+}
+
+/* figure out what to do about this after you have an image */
+/* TO-DO add animation to the text */
+.location-time-container {
+  position: relative;
+  top: 50%;
+}
+
+.location-time-container p {
+  position: absolute;
+  font-size: 16px;
+}

@@ -1,0 +1,10 @@
+@import url("https://use.typekit.net/ily8zgu.css");
+
+html, body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "futura-pt", sans-serif;
+}

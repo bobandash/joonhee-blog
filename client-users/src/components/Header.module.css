@@ -1,0 +1,36 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.header {
+  background-color: lightgray;
+  font-size: 24px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1400px;
+  display: flex;
+  margin: 0 auto;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.nav-items {
+  margin-left: auto;
+  display: flex;
+  list-style: none;
+}
+
+.nav-items li a:hover {
+  text-decoration: underline;
+}
+
+.nav-items li:not(:first-child) {
+  margin-left: 36px;
+}

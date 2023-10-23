@@ -4,7 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const passport = require("passport");
-const jwtStrategry  = require("./strategies/jwt")
+const jwtStrategry  = require("./strategies/jwt");
+const cors = require('cors');
 
 const connect_db = require('./utils/db')
 require('dotenv').config()
@@ -17,12 +18,12 @@ const postsRouter = require('./routes/posts');
 
 connect_db();
 var app = express();
+app.use(cors());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 
 passport.use(jwtStrategry);
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

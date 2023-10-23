@@ -3,12 +3,13 @@ const Post = require('../models/posts');
 const Comment = require('../models/comments')
 const mongoose = require('mongoose');
 const {body, validationResult} = require('express-validator');
+const verifyToken = require('../utils/verifyToken')
 
 exports.posts = asyncHandler(async (req, res, next) => {
-  const posts = await Post.find({}).sort({timeStamp: -1})
-  const postsWithVirtual = posts.map(post => post.toJSON())
-  res.json(postsWithVirtual);
-})
+    const posts = await Post.find({}).sort({timeStamp: -1})
+    const postsWithVirtual = posts.map(post => post.toJSON())
+    res.json(postsWithVirtual);
+  })
 
 exports.individual_post = asyncHandler(async (req, res, next) => {
   const postId = req.params.postId
@@ -17,7 +18,7 @@ exports.individual_post = asyncHandler(async (req, res, next) => {
   res.json(post);
 })
 
-exports.delete_individual_post = asyncHandler(async(req, res, next) => {
+exports.delete_individual_post = [verifyToken, asyncHandler(async(req, res, next) => {
   const postId = req.params.postId;
   const postObjectId = new mongoose.Types.ObjectId(postId);
   // delete post deletes post and associated comments
@@ -26,10 +27,11 @@ exports.delete_individual_post = asyncHandler(async(req, res, next) => {
     Comment.deleteMany({post: postObjectId}).exec()
   ])
   res.sendStatus(204);
-})
+})]
 
 /*   title content summary timestamp */
 exports.create_individual_post = [
+  verifyToken,
   body('title', 'Title cannot be empty')
     .trim()
     .notEmpty()
@@ -44,7 +46,7 @@ exports.create_individual_post = [
     .escape(),
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req).mapped();
-    if(errors.size === 0){
+    if(Object.keys(errors).length > 0){
       res.json(errors);
     } else {
       const [title, content, summary] = [
@@ -61,6 +63,7 @@ exports.create_individual_post = [
 
 
 exports.edit_individual_post = [
+  verifyToken,
   body('title', 'Title cannot be empty')
     .trim()
     .notEmpty()

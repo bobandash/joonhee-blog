@@ -4,6 +4,7 @@ const {body, validationResult} = require('express-validator');
 const Filter = require('bad-words')
 const Post = require('../models/posts');
 const Comment = require('../models/comments');
+const verifyToken = require('../utils/verifyToken')
 
 
 exports.comments = asyncHandler(async (req, res, next) => {
@@ -25,6 +26,7 @@ exports.individual_comment = asyncHandler(async (req, res, next) => {
 })
 
 exports.create_individual_comment = [
+  verifyToken, 
   body('message', 'Message cannot be empty')
     .trim()
     .notEmpty()
@@ -47,8 +49,11 @@ exports.create_individual_comment = [
   })
 ]
 
-exports.delete_individual_comment = asyncHandler(async (req, res, next) => {
-  const commentId = req.params.commentId;
-  await Comment.findByIdAndDelete(commentId);
-  res.sendStatus(204);
-})
+exports.delete_individual_comment = [
+  verifyToken,
+  asyncHandler(async (req, res, next) => {
+    const commentId = req.params.commentId;
+    await Comment.findByIdAndDelete(commentId);
+    res.sendStatus(204);
+  })
+]

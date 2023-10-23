@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const asyncHandler = require('express-async-handler');
+const {body, validationResult} = require('express-validator');
+const Filter = require('bad-words')
 const Post = require('../models/posts');
 const Comment = require('../models/comments');
+
 
 exports.comments = asyncHandler(async (req, res, next) => {
   const postId = req.params.postId;
@@ -19,4 +22,33 @@ exports.individual_comment = asyncHandler(async (req, res, next) => {
   let comment = await Comment.findById(commentId)
   comment = comment.toJSON();
   res.json(comment);
+})
+
+exports.create_individual_comment = [
+  body('message', 'Message cannot be empty')
+    .trim()
+    .notEmpty()
+    .escape(),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req).mapped();
+    if(errors.size === 0){
+      res.json(errors);
+    } else {
+      const filter = new Filter();
+      const [post, username, message] = [
+        req.params.postId,
+        filter.clean(req.body.username),
+        filter.clean(req.body.message)
+      ]
+      const newComment = username === '' ? new Comment({post, message}) : new Comment({post, username, message});
+      await newComment.save();
+      res.json(newComment);
+    }
+  })
+]
+
+exports.delete_individual_comment = asyncHandler(async (req, res, next) => {
+  const commentId = req.params.commentId;
+  await Comment.findByIdAndDelete(commentId);
+  res.sendStatus(204);
 })

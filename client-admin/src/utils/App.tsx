@@ -1,9 +1,11 @@
+import Header from '../components/Header'
+
 function App() {
   return (
     <>
-      <div>Temp</div>
+      <Header isSignedIn = {true} />
     </>
   )
 }
 
-export default App
+export default App;

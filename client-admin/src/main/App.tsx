@@ -3,14 +3,14 @@ import SignInForm from '../pages/sign-in/SignInForm';
 import Footer from '../components/Footer';
 import Posts from '../pages/posts/Posts';
 import { useState, useEffect } from 'react';
-import { navItems } from './constants';
+import { navItems } from '../utils/constants';
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
 
   async function getSignedInStatus(){
     if(localStorage.getItem('jwt') !== ""){
-      const response = await fetch("/admin/signed-in-status", {
+      const response = await fetch(import.meta.env.VITE_BACKEND_PORT + "/admin/signed-in-status", {
         method: "GET",
         mode: "cors",
         headers: {

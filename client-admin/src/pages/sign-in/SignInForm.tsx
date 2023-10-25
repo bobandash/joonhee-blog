@@ -50,7 +50,7 @@ const SignInForm : FC<FormProps> = ({getSignedInStatus}) => {
   async function handlePost(e : React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      const response = await fetch('/admin/login', {
+      const response = await fetch(import.meta.env.VITE_BACKEND_PORT + '/admin/login', {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -83,7 +83,8 @@ const SignInForm : FC<FormProps> = ({getSignedInStatus}) => {
           id= "email" 
           name = "email" 
           autoComplete="off"
-          onChange = {(e) => changeEmailInput(e)} 
+          onChange = {(e) => changeEmailInput(e)}
+          onFocus = {(e) => changeEmailInput(e)}
           value = {emailInput} 
           className = {formErrors.email && "error-input"}
           required/>
@@ -98,6 +99,7 @@ const SignInForm : FC<FormProps> = ({getSignedInStatus}) => {
                 name = "password" 
                 autoComplete="off" 
                 onChange = {(e) => changePasswordInput(e)}
+                onFocus = {(e) => changePasswordInput(e)}
                 value = {passwordInput}
                 className = {formErrors.password && "error-input"}
                 required/>

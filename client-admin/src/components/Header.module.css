@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   padding: 20px 10%;
+  margin-bottom: 30px;
 }
 
 .space-between {
@@ -16,6 +17,10 @@
 .header > h1 {
   color: white;
   border: 1px solid #C99700;
+}
+
+.active {
+  color: #C99700 !important;
 }
 
 .desktop-nav-items {

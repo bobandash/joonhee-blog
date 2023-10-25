@@ -5,6 +5,10 @@
   background-color: #0C2340;
 }
 
+.document-flow {
+  position: relative !important;
+}
+
 .footer > p {
   text-align: center;
   color: white;

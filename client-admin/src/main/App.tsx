@@ -32,18 +32,24 @@ function App() {
     getSignedInStatus();
   }, [])
 
+  if(!isSignedIn){
+    return (
+      <>
+        <Header 
+          isSignedIn = {false}
+          active = {navItems.POSTS} 
+        />
+        <SignInForm getSignedInStatus = {getSignedInStatus}/>
+        <Footer isAbsolute = {true}/>
+      </>
+    )
+  }
+
   return (
     <>
-      <Header 
-        isSignedIn = {isSignedIn}
-        active = {navItems.POSTS}  
-      />
-      {isSignedIn ?   
-        <Posts /> :
-        <SignInForm getSignedInStatus = {getSignedInStatus}/>
-      }
-      
-      <Footer />
+      <Header isSignedIn = {isSignedIn} active = {navItems.POSTS}  />
+      <Posts />
+      <Footer isAbsolute = {false}/>
     </>
   )
 }

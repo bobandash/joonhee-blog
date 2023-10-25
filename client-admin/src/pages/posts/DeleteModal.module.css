@@ -1,0 +1,86 @@
+.full-screen {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: lightgray;
+}
+
+.modal-container {
+  position: absolute;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 70vh;
+  margin: 0 auto;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+}
+
+.modal-contents {
+  margin: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.post-title {
+  margin: 0;
+}
+
+.confirmation-message {
+  color: red;
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.post-type {
+  font-weight: normal;
+  margin: 0;
+  margin-top: 12px;
+}
+
+.post-content {
+  margin: 0;
+  height: 40vh;
+  overflow-y: scroll;
+  margin-top: 4px;
+  margin-bottom: 18px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 4px 8px;
+
+}
+
+.button-container {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+}
+
+.button-container button {
+  padding: 5px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.cancel-btn {
+  background-color: #0C2340;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #0e3463;
+}
+
+.delete-btn {
+  background-color: #FE0000;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #f72424;
+}

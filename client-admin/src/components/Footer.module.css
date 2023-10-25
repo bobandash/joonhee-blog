@@ -3,12 +3,13 @@
   bottom: 0;
   width: 100%;
   background-color: #0C2340;
-  position: fixed;
 }
 
 .footer > p {
   text-align: center;
   color: white;
+  margin: 0;
+  padding: 20px 0px;
 }
 
 .joonhee {

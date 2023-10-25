@@ -46,7 +46,7 @@ const Posts = () => {
       post = {postToDelete} 
       toggleModal = {toggleDeleteModal}
       updatePosts = {getPosts}
-    />);
+    />)
   }
 
   return (
@@ -57,7 +57,7 @@ const Posts = () => {
           key = {post.id} 
           toggleModal = {toggleDeleteModal} 
           setPostToDelete = {setPostInterested} />
-        )};
+        )}
     </div>
   )
 }

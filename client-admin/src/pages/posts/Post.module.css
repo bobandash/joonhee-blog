@@ -2,6 +2,10 @@
   margin-top: 20px;
 }
 
+.post:last-of-type{
+  margin-bottom: 30px;
+}
+
 .post {
   border: 1px solid #0C2340;
   border-radius: 10px;

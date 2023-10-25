@@ -32,10 +32,10 @@ const PostComponent: FC<PostItemsProps> = ({post}) => {
         <p className = {styles.summary}>{post.summary}</p>
         <div className = {styles["post-buttons-container"]}>
           <button className = {styles["post-delete"]} onClick ={async () => {await deletePost();}}>
-            <i className='fa-solid fa-trash'></i>
+            <i className='fa-solid fa-trash'></i> Delete
           </button>
           <button className = {styles["post-edit"]} onClick = {() => editPost()}>
-            <i className="fa-solid fa-pen-to-square"></i>
+            <i className="fa-solid fa-pen-to-square"></i> Edit
           </button>
       </div>
       </div>

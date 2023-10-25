@@ -5,13 +5,13 @@
 .post {
   border: 1px solid #0C2340;
   border-radius: 10px;
-  background-color: #D9D9D9;
+  background-color: white;
   box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
 }
 
 .post:hover {
   cursor: pointer;
-  background-color: rgb(225, 225, 225)
+  background-color: whitesmoke;
 }
 
 .content-container {
@@ -34,17 +34,32 @@
   font-weight: 400px;
 }
 
-
 .post-buttons-container {
   display: flex;
   gap: 5px;
   justify-content: flex-end;
 }
 
-.post-delete {
+.post-buttons-container button {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 1.5px solid black;
+}
 
+.post-delete {
+  background-color: #FE0000;
+  color: white;
+}
+
+.post-delete:hover {
+  background-color: #f72424;
 }
 
 .post-edit {
+  background-color: #0C2340;
+  color: white;
+}
 
+.post-edit:hover {
+  background-color: black;
 }

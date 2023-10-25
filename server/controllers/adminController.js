@@ -3,7 +3,9 @@ const asyncHandler = require('express-async-handler');
 const {body, validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 const Admin = require('../models/admin')
+const verifyToken = require('../utils/verifyToken')
 require('dotenv').config();
+
 
 exports.log_in = [
   body('email', 'Must be a valid email')
@@ -13,7 +15,7 @@ exports.log_in = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req).mapped();
     if(Object.keys(errors).length > 0){
-      res.json(errors);
+      res.status(400).json(errors);
     } else {
       let {email, password} = req.body;
       if (email === process.env.ADMIN_EMAIL) {
@@ -27,7 +29,18 @@ exports.log_in = [
           })
         }
       }
-      return res.status(401).json({message: "Auth failed"});
+      return res.status(400).json({password: {
+        msg: 'Password is incorrect.'
+      }});
     }
   })
+]
+
+exports.get_signed_in_status = [
+  verifyToken,
+  async (req, res, next) => {
+    res.status(200).json({
+      message: "Auth Passed"
+    })
+  }
 ]

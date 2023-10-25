@@ -1,0 +1,63 @@
+.form-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+}
+
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  padding: 20px 30px;
+}
+
+.sign-in-form label, .sign-in-form input , .sign-in-form button[type="submit"] {
+  font-size: 18px;
+}
+
+.sign-in-form input {
+  width: 100%;
+  padding-left: 8px;
+  margin-top: 4px;
+  border-radius: 10px;
+}
+
+.sign-in-form input:focus {
+  outline: none;
+  border: 2px solid #D0A650;
+}
+
+.sign-in-form button[type="submit"] {
+  width: fit-content;
+  padding: 5px 15px;
+  margin-left: auto;
+  border-radius: 10px;
+  background-color: #244AA5; 
+  color: white;
+  margin-top: 16px;
+}
+
+.sign-in-form button[type="submit"]:hover {
+  background-color: #0C2340;
+}
+
+.sign-in-form label:nth-of-type(n + 2){
+  margin-top: 10px;
+}
+
+.password-button-container {
+  position: relative;
+}
+
+.password-button-container button {
+  position: absolute;
+  right: 2.5%;
+  background-color: white;
+  border: 0px;
+  width: fit-content;
+  padding: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+}

@@ -18,6 +18,10 @@ const Post = new Schema({
   timestamp: {
     type: Date,
     default: new Date()
+  },
+  isVisible: {
+    type: Boolean,
+    default: true
   }
 })
 

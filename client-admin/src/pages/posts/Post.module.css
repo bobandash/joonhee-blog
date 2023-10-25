@@ -36,7 +36,7 @@
 
 .post-buttons-container {
   display: flex;
-  gap: 5px;
+  gap: 7.5px;
   justify-content: flex-end;
 }
 
@@ -44,6 +44,10 @@
   padding: 5px 10px;
   border-radius: 10px;
   border: 1.5px solid black;
+}
+
+.post-visible:hover {
+  background-color: rgb(240, 240, 240);
 }
 
 .post-delete {
@@ -61,5 +65,5 @@
 }
 
 .post-edit:hover {
-  background-color: black;
+  background-color: #0e3463;
 }

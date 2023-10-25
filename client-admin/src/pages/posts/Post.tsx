@@ -31,11 +31,20 @@ const PostComponent: FC<PostItemsProps> = ({post}) => {
         <h2 className = {styles.date}>{post.dateFormatted}</h2>
         <p className = {styles.summary}>{post.summary}</p>
         <div className = {styles["post-buttons-container"]}>
-          <button className = {styles["post-delete"]} onClick ={async () => {await deletePost();}}>
-            <i className='fa-solid fa-trash'></i> Delete
-          </button>
           <button className = {styles["post-edit"]} onClick = {() => editPost()}>
             <i className="fa-solid fa-pen-to-square"></i> Edit
+          </button>
+          {post.isVisible ? 
+            <button className = {styles["post-visible"]}>
+              <i className = "fa-solid fa-eye"></i> Visible
+            </button>
+          :
+            <button className = {styles["post-visible"]}>
+              <i className = "fa-solid fa-eye-slash"></i> Hidden
+            </button>
+          }
+          <button className = {styles["post-delete"]} onClick ={async () => {await deletePost();}}>
+            <i className='fa-solid fa-trash'></i> Delete
           </button>
       </div>
       </div>

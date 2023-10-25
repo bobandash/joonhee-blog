@@ -8,4 +8,5 @@ export interface PostItems {
   content: string,
   dateFormatted: string,
   id: string,
+  isVisible: boolean,
 }

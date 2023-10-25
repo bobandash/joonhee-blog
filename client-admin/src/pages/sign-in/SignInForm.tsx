@@ -50,7 +50,7 @@ const SignInForm : FC<FormProps> = ({getSignedInStatus}) => {
   async function handlePost(e : React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/admin/login', {
+      const response = await fetch('/admin/login', {
         method: 'POST',
         mode: 'cors',
         headers: {

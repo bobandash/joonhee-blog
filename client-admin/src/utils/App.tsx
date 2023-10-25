@@ -10,7 +10,7 @@ function App() {
 
   async function getSignedInStatus(){
     if(localStorage.getItem('jwt') !== ""){
-      const response = await fetch("http://www.localhost:3000/admin/signed-in-status", {
+      const response = await fetch("/admin/signed-in-status", {
         method: "GET",
         mode: "cors",
         headers: {

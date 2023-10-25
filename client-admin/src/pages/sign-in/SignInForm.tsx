@@ -1,5 +1,6 @@
 import { useState, FC} from 'react'
 import styles from './SignInForm.module.css'
+import { redirect404 } from '../../utils/redirect';
 
 // getSignedInStatus changes the App.tsx signInStatus state
 interface FormProps {
@@ -70,7 +71,7 @@ const SignInForm : FC<FormProps> = ({getSignedInStatus}) => {
       }
     }
     catch {
-      // TO-DO add catch for this fetch
+      redirect404();
     }
   }
 

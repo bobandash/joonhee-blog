@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import PostComponent from "./Post";
 import { PostItems } from "./Post.interface";
 import DeleteModal from "./DeleteModal";
+import { redirect404 } from "../../utils/redirect";
 
 const Posts = () => {
   const [posts, setPosts] = useState<PostItems[]>([]);
@@ -25,16 +26,21 @@ const Posts = () => {
 
   // Function that needs to be called to update posts
   async function getPosts(){
-    const response = await fetch(import.meta.env.VITE_BACKEND_PORT + '/posts', {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-    })
-    const data = await response.json();
-    setPosts(data);
+    try{
+      const response = await fetch(import.meta.env.VITE_BACKEND_PORT + '/posts', {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+      })
+      const data = await response.json();
+      setPosts(data);
+    }
+    catch {
+      redirect404();
+    }
   }
 
   useEffect(() => {

@@ -1,0 +1,26 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #0C2340;
+  position: fixed;
+}
+
+.footer > p {
+  text-align: center;
+  color: white;
+}
+
+.joonhee {
+  position: absolute;
+  right: -10%;
+  bottom: 0%;
+  height: 300px;
+  z-index: -1;
+}
+
+@media screen and (min-width: 800px) {
+  .joonhee {
+    right: 0%;
+  }
+}

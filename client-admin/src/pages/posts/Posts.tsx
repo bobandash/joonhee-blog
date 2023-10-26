@@ -3,6 +3,7 @@ import PostComponent from "./Post";
 import { PostItems } from "./Post.interface";
 import DeleteModal from "./DeleteModal";
 import { redirect404 } from "../../utils/redirect";
+import CreatePostBtn from "./CreatePostBtn";
 
 const Posts = () => {
   const [posts, setPosts] = useState<PostItems[]>([]);
@@ -57,6 +58,7 @@ const Posts = () => {
 
   return (
     <div className = "container">
+      <CreatePostBtn />
       {posts.map((post) => 
         <PostComponent 
           post = {post} 

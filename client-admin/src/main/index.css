@@ -40,3 +40,14 @@ button:hover {
   flex-direction: column;
   min-height: 100vh;
 }
+
+.generic-btn {
+  background-color: #244AA5;
+  border-radius: 10px;
+  padding: 5px 15px;
+  color: white;
+}
+
+.generic-btn:hover {
+  background-color: #0C2340;
+}

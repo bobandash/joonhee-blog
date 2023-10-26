@@ -10,3 +10,7 @@ export const logout = () => {
   window.localStorage.setItem('jwt', '');
   window.location.href = '/';
 }
+
+export const redirectCreatePost = () => {
+  window.location.href = "/post/create"
+}

@@ -54,7 +54,7 @@ exports.delete_individual_comment = [
   asyncHandler(async (req, res, next) => {
     const commentId = req.params.commentId;
     await Comment.findByIdAndDelete(commentId);
-    res.sendStatus(204);
+    res.json({"Message": "Successfully deleted"});
   })
 ]
 

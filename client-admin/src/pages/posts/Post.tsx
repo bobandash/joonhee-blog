@@ -6,7 +6,7 @@ import he from 'he';
 const PostComponent: FC<PostItemsProps> = ({post, toggleModal, setPostToDelete}) => {
 
   function editPost(){
-    window.location.href = "/post/" + post.id;
+    window.location.href = "/post/edit/" + post.id;
   }
 
   return (

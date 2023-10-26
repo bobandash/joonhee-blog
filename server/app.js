@@ -14,6 +14,7 @@ const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
 const mailingListRouter = require('./routes/mailing-list');
 const postsRouter = require('./routes/posts');
+const commentsRouter = require('./routes/comments')
 
 
 connect_db();
@@ -35,6 +36,7 @@ app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 /* app.use('/mailing', mailingListRouter); */
 app.use('/posts', postsRouter);
+app.use('/comments', commentsRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

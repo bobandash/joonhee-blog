@@ -57,3 +57,11 @@ exports.delete_individual_comment = [
     res.sendStatus(204);
   })
 ]
+
+exports.get_all_comments = [
+  verifyToken,
+  asyncHandler(async (req, res, next) => {
+    const comments = await Comment.find({}).populate('post');
+    res.json(comments);
+  })
+]

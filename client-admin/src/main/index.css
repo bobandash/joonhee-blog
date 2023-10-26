@@ -27,7 +27,7 @@ button:hover {
   cursor: pointer;
 }
 
-.error {
+.error, .required {
   color: red;
 }
 
@@ -50,4 +50,8 @@ button:hover {
 
 .generic-btn:hover {
   background-color: #0C2340;
+}
+
+.success {
+  color: green;
 }

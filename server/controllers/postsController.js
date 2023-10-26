@@ -47,7 +47,7 @@ exports.create_individual_post = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req).mapped();
     if(Object.keys(errors).length > 0){
-      res.json(errors);
+      res.send(403).json(errors);
     } else {
       const [title, content, summary] = [
         req.body.title,

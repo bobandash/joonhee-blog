@@ -1,0 +1,32 @@
+/* additional quill css */
+.ql-editor {
+  min-height: 40vh;
+}
+
+.ql-editor p {
+  font-size: 18px;
+}
+
+.quill {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.ql-toolbar {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.ql-container {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.ql-toolbar.ql-snow {
+  border-bottom: 1px solid gray;
+}
+
+.ql-editor {
+  padding: 4px 8px;
+}

@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { PostItemsProps } from './Post.interface';
 import styles from './Post.module.css'
+import he from 'he';
 
 const PostComponent: FC<PostItemsProps> = ({post, toggleModal, setPostToDelete}) => {
 
@@ -12,9 +13,9 @@ const PostComponent: FC<PostItemsProps> = ({post, toggleModal, setPostToDelete})
     <>
       <div className = {styles.post}>
         <div className = {styles["content-container"]}>
-          <h1 className = {styles.title}>{post.title}</h1>
+          <h1 className = {styles.title}>{he.decode(post.title)}</h1>
           <h2 className = {styles.date}>{post.dateFormatted}</h2>
-          <p className = {styles.summary}>{post.summary}</p>
+          <p className = {styles.summary}>{he.decode(post.summary)}</p>
           <div className = {styles["post-buttons-container"]}>
             <button className = {styles["post-edit"]} onClick = {() => editPost()}>
               <i className="fa-solid fa-pen-to-square"></i> Edit

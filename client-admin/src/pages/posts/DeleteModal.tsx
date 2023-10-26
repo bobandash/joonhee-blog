@@ -2,6 +2,8 @@ import {FC} from 'react'
 import { DeleteModalProps } from './Post.interface';
 import { getJwt } from '../../utils/jwt';
 import styles from './DeleteModal.module.css'
+import he from 'he';
+import parse from 'html-react-parser'
 
 const DeleteModal : FC<DeleteModalProps>= ({post, toggleModal, updatePosts}) => {
   async function deletePost(){
@@ -24,10 +26,10 @@ const DeleteModal : FC<DeleteModalProps>= ({post, toggleModal, updatePosts}) => 
     <div className = {styles["full-screen"]}>
       <div className = {styles["modal-container"]}>
         <div className = {styles["modal-contents"]}>
-          <h1 className = {styles["post-title"]}>{post.title}</h1>
+          <h1 className = {styles["post-title"]}>{he.decode(post.title)}</h1>
           <p className = {styles["confirmation-message"]}>Are you sure you want to delete this post?</p>
           <h2 className = {styles["post-type"]}>Content:</h2>
-          <p className = {styles["post-content"]}>{post.content}</p>
+          <p className = {styles["post-content"]}>{parse(he.decode(post.content))}</p>
           <div className = {styles["button-container"]}>
             <button className = {styles["cancel-btn"]} onClick = {toggleModal}>Cancel</button>
             <button 

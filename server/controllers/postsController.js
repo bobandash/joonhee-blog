@@ -95,3 +95,17 @@ exports.edit_individual_post = [
     }
   })
 ]
+
+
+exports.toggle_individual_post_visibility = [
+  verifyToken, 
+  asyncHandler(async (req, res, next) => {
+    const postId = req.params.postId;
+    const currentPostVisibility = (await Post.findById(postId)).isVisible;
+    await Post.findByIdAndUpdate(postId, {
+      isVisible: !currentPostVisibility
+    })
+    const newPost = await Post.findById(postId);
+    res.json(newPost);
+  })
+]

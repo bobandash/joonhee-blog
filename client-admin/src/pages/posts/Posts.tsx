@@ -64,7 +64,9 @@ const Posts = () => {
           post = {post} 
           key = {post.id} 
           toggleModal = {toggleDeleteModal} 
-          setPostToDelete = {setPostInterested} />
+          setPostToDelete = {setPostInterested} 
+          updatePosts = {getPosts}
+        />
         )}
     </div>
   )

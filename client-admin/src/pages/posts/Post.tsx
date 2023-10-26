@@ -2,11 +2,31 @@ import { FC } from 'react'
 import { PostItemsProps } from './Post.interface';
 import styles from './Post.module.css'
 import he from 'he';
+import { getJwt } from '../../utils/jwt';
+import { redirect404 } from '../../utils/redirect';
 
-const PostComponent: FC<PostItemsProps> = ({post, toggleModal, setPostToDelete}) => {
+const PostComponent: FC<PostItemsProps> = ({post, toggleModal, setPostToDelete, updatePosts}) => {
 
   function editPost(){
     window.location.href = "/post/edit/" + post.id;
+  }
+
+  async function toggleVisibility(){
+    const postId = post.id;
+    try {
+      await fetch(`${import.meta.env.VITE_BACKEND_PORT}/posts/${postId}/update/visibility`, {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'authorization': 'Bearer ' + getJwt()
+        }
+      })
+      await updatePosts();
+    } catch {
+      redirect404();
+    }
   }
 
   return (
@@ -20,15 +40,19 @@ const PostComponent: FC<PostItemsProps> = ({post, toggleModal, setPostToDelete})
             <button className = {styles["post-edit"]} onClick = {() => editPost()}>
               <i className="fa-solid fa-pen-to-square"></i> Edit
             </button>
-            {post.isVisible ? 
-              <button className = {styles["post-visible"]}>
-                <i className = "fa-solid fa-eye"></i> Visible
+              <button onClick = {async () => {await toggleVisibility()}} className = {styles["post-visible"]}>
+                {post.isVisible ? 
+                  <>
+                    <i className = "fa-solid fa-eye"></i>
+                    <span> Visible</span>
+                  </>
+                  :
+                  <>
+                    <i className = "fa-solid fa-eye-slash"></i>
+                    <span> Hidden</span>
+                  </>
+                }
               </button>
-            :
-              <button className = {styles["post-visible"]}>
-                <i className = "fa-solid fa-eye-slash"></i> Hidden
-              </button>
-            }
             <button className = {styles["post-delete"]} onClick = {() => {
               toggleModal();
               setPostToDelete(post);

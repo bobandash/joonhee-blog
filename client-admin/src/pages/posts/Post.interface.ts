@@ -2,12 +2,13 @@ export interface PostItemsProps {
   post: PostItems,
   toggleModal: () => void,
   setPostToDelete: (post: PostItems) => void,
+  updatePosts: () => Promise<void>;
 }
 
 export interface DeleteModalProps {
   post: PostItems,
   toggleModal: () => void;
-  updatePosts: () => void;
+  updatePosts: () => Promise<void>;
 }
 
 export interface PostItems {

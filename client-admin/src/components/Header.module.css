@@ -46,6 +46,25 @@
   cursor: pointer;
 }
 
+.logout-container {
+  border: 1px solid black;
+  background-color: white;
+}
+
+.logout-container:hover, .logout-cotnainer a:hover {
+  background-color: whitesmoke;
+}
+
+.logout-container a {
+  padding: 10px 15px;
+  color: black !important;
+  background-color: white;
+}
+
+.logout-container a:hover {
+  text-decoration: none !important;
+}
+
 @media screen and (min-width: 800px) {
   .desktop-nav-items {
     display: flex;

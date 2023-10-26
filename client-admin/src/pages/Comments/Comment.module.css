@@ -1,0 +1,50 @@
+.post:nth-of-type(n + 2){
+  margin-top: 20px;
+}
+
+.post:last-of-type{
+  margin-bottom: 30px;
+}
+
+.comment {
+  border: 1px solid #0C2340;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+}
+
+.content-container {
+  margin: 15px 25px;
+}
+
+.content-container > * {
+  margin: 0;
+}
+
+.content-container > h2 {
+  font-size: 24px;
+  font-weight: 400px;
+  margin-top: 4px;
+}
+
+
+.comment-buttons-container {
+  display: flex;
+  gap: 7.5px;
+  justify-content: flex-end;
+}
+
+.comment-buttons-container button {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 1.5px solid black;
+}
+
+.comment-delete {
+  background-color: #FE0000;
+  color: white;
+}
+
+.comment-delete:hover {
+  background-color: #f72424;
+}

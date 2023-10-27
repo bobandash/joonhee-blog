@@ -5,6 +5,7 @@ import {postProps, commentsProps} from '../../models/interface'
 import Footer from "../../components/Footer";
 import PostSection from "./PostSection";
 import styles from './PostPage.module.css'
+import CommentSection from "./CommentSection";
 
 const PostPage = () => {
   const samplePost = {
@@ -19,6 +20,18 @@ const PostPage = () => {
   const [comments, setComments] = useState<commentsProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  async function updateComments(){
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_PORT}/posts/${postId}/comments`, {
+        method: "GET",
+        mode: "cors"
+      })
+      const data = await response.json();
+      setComments(data);
+    } catch {
+      // TO-DO: add 404 page
+    }
+  }  
 
   useEffect(() => {
     // functions for getting specific post and specific post comments
@@ -46,7 +59,7 @@ const PostPage = () => {
       } catch {
         // TO-DO: add 404 page
       }
-    }
+    }  
 
     Promise.all([
       getPost(),
@@ -70,10 +83,9 @@ const PostPage = () => {
         <Header />
         <div className="container">
           <PostSection post = {post}/>
+          <CommentSection comments = {comments} getLatestComments = {updateComments} />
         </div>
-          {/*       <CommentSection comment = {comments} /> */}
         <Footer />
-
       </div>
 
     </>

@@ -14,3 +14,13 @@ html, body {
   max-width: 1000px;
   margin: 0 auto;
 }
+
+.error {
+  color: red;
+  margin: 0;
+}
+
+.success {
+  color: green;
+  margin: 0;
+}

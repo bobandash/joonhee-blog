@@ -8,3 +8,9 @@ html, body {
   box-sizing: border-box;
   font-family: "futura-pt", sans-serif;
 }
+
+.container {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+}

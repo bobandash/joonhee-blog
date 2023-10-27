@@ -9,6 +9,7 @@ import RequiredAsterisk from "../../components/RequiredAsterisk";
 import { useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import { module } from "../../utils/quill.config";
+import he from 'he'
 
 const PostForm = () => {
   // TO-DO: study useReducers and check whether or not you can use reducers to update the object state
@@ -21,8 +22,20 @@ const PostForm = () => {
   const [hasErrors, setHasErrors] = useState(false);
   const [post, setPost] = useState(samplePostObject);
   const [hasBeenUpdated, setHasBeenUpdated] = useState(false);
+  function handleChange(e : React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+    const { name, value } = e.target;
+    setPost(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
 
-  console.log(post);
+  function handleContentChange(value: string){
+    setPost(prevState => ({
+      ...prevState,
+      content: value
+    }))
+  }
 
   useEffect(() => {
     async function fetchPost(){
@@ -37,9 +50,9 @@ const PostForm = () => {
       })
       const data = await response.json();
       setPost({
-        title: data.title,
-        summary: data.summary,
-        content: data.content
+        title: he.decode(data.title),
+        summary: he.decode(data.summary),
+        content: he.decode(data.content)
       })
     }
     fetchPost();
@@ -47,7 +60,7 @@ const PostForm = () => {
 
   async function updatePost(){
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_PORT}/${postId}/update`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_PORT}/posts/${postId}/update`, {
         method: "PUT",
         mode: "cors",
         headers: {
@@ -72,39 +85,21 @@ const PostForm = () => {
     }
   }
 
-/*   // functions to change the post method
-  function changeTitle(e: React.FormEvent<HTMLInputElement>){
-    setPost(prevPost => ({ ...prevPost, title: e.currentTarget.value }));
-    setHasBeenUpdated(false);
-    setHasErrors(false);
-  }
-
-  function changeSummary(e: React.FormEvent<HTMLTextAreaElement>){
-    setPost(prevPost => ({ ...prevPost, summary: e.currentTarget.value }));
-    setHasBeenUpdated(false);
-    setHasErrors(false);
-  }
-
-  function changeContent(value: string){
-    setPost(prevPost => ({ ...prevPost, content: value }));
-    setHasBeenUpdated(false);
-    setHasErrors(false);
-  } */
-
   return (
     <>
-      {hasBeenUpdated && <span className = "success">Your post has been successfully created.</span>}
+      {hasBeenUpdated && <span className = "success">Your post has been successfully updated.</span>}
       {hasErrors && <span className = "error">Please make sure all fields are filled out.</span>}
       <form className = {formStyles.form}>
         <label htmlFor="title">Title<RequiredAsterisk /></label>
-        <input type = "text" id = "title" name = "title" value = {post.title}/>
+        <input type = "text" id = "title" name = "title" value = {post.title} onChange = {handleChange}/>
         <label htmlFor="summary">Summary<RequiredAsterisk /></label>
-        <textarea rows = {3} name = "summary" value = {post.summary} id = "summary">
+        <textarea rows = {3} name = "summary" value = {post.summary} id = "summary" onChange = {handleChange}>
         </textarea>
         <label htmlFor="content">Content<RequiredAsterisk /></label>
         <ReactQuill 
           theme="snow" 
-          value={post.summary} 
+          value={post.content}
+          onChange = {handleContentChange}
           modules = {module}
         />
         <button type="submit" onClick = {async (e) => {

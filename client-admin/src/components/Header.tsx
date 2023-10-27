@@ -11,7 +11,7 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ active }) => {
-  const {isSignedIn} = useContext(SignedInContext);
+  const {isSignedIn, getSignedInStatus} = useContext(SignedInContext);
   if (!isSignedIn) {
     return (
       <header className={`${styles["header"]} ${styles["centered"]}`}>
@@ -27,7 +27,7 @@ const Header: FC<HeaderProps> = ({ active }) => {
       <ul className = {styles["desktop-nav-items"]}>
         <li><a className = {(active === navItems.POSTS) ? styles["active"] : ''} href="/">Posts</a></li>
         <li><a className = {(active === navItems.COMMENTS) ? styles["active"] : ''} href="/comments">Comments</a></li>
-        <li className = {styles["logout-container"]} onClick = {logout}>
+        <li className = {styles["logout-container"]} onClick = {async () => {await logout(getSignedInStatus)}}>
           <a className = {(active === navItems.LOGOUT) ? styles["active"] : ''} href="">Log Out</a>
         </li>
       </ul>

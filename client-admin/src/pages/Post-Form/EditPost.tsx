@@ -6,7 +6,7 @@ import EditPostForm from "./EditPostForm";
 const EditPostPage = () => {
   return(
     <>
-      <Header isSignedIn = {true} active = {navItems.POSTS}/>
+      <Header active = {navItems.POSTS}/>
         <div className="container">
           <EditPostForm />
         </div>

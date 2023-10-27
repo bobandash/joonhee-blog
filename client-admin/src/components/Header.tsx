@@ -3,13 +3,15 @@ import {FC} from 'react'
 import JoonheeLogo from '../assets/joonhee-logo.svg'
 import { navItems } from '../utils/constants'
 import { logout, redirectHome } from '../utils/redirect'
+import { SignedInContext } from '../main/context'
+import { useContext } from "react";
 
 interface HeaderProps {
-  isSignedIn: boolean
   active: string
 }
 
-const Header: FC<HeaderProps> = ({ isSignedIn, active }) => {
+const Header: FC<HeaderProps> = ({ active }) => {
+  const {isSignedIn} = useContext(SignedInContext);
   if (!isSignedIn) {
     return (
       <header className={`${styles["header"]} ${styles["centered"]}`}>

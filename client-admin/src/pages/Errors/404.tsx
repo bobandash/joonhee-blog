@@ -7,7 +7,7 @@ const ErrorPage = () => {
   return (
     <>
       <div className= {styles["whole-screen"]}>
-        <Header isSignedIn = {false} active = {navItems.POSTS}/>
+        <Header active = {navItems.POSTS}/>
         <div className = {styles["error-wrapper"]}>
           <h1>D'oh! Something went wrong!</h1>
           <button onClick = {redirectHome}>

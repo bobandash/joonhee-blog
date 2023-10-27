@@ -9,7 +9,7 @@ import Footer from "../../components/Footer";
 
 const CommentsPage = () => {
   const [comments, setComments] = useState<CommentsProps[]>([]);
-
+  
   // Function that needs to be called to update posts
   async function getComments(){
     try{
@@ -36,7 +36,7 @@ const CommentsPage = () => {
 
   return (
     <>
-      <Header isSignedIn = {true} active = {navItems.COMMENTS}/>
+      <Header active = {navItems.COMMENTS}/>
       <div className = "container">
         {comments.map((comment) => 
           <CommentComponent

@@ -6,7 +6,7 @@ import PostForm from "./CreatePostForm";
 const PostPage = () => {
   return(
     <>
-      <Header isSignedIn = {true} active = {navItems.POSTS}/>
+      <Header active = {navItems.POSTS}/>
         <div className="container">
           <PostForm />
         </div>

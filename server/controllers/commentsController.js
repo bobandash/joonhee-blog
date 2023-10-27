@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const asyncHandler = require('express-async-handler');
 const {body, validationResult} = require('express-validator');
-const Filter = require('bad-words')
 const Post = require('../models/posts');
 const Comment = require('../models/comments');
 const verifyToken = require('../utils/verifyToken')
@@ -35,11 +34,10 @@ exports.create_individual_comment = [
     if(Object.keys(errors).length > 0){
       res.json(errors);
     } else {
-      const filter = new Filter();
       const [post, username, message] = [
         req.params.postId,
-        filter.clean(req.body.username),
-        filter.clean(req.body.message)
+        req.body.username,
+        req.body.message
       ]
       const newComment = username === '' ? new Comment({post, message}) : new Comment({post, username, message});
       await newComment.save();

@@ -26,7 +26,6 @@ exports.individual_comment = asyncHandler(async (req, res, next) => {
 })
 
 exports.create_individual_comment = [
-  verifyToken, 
   body('message', 'Message cannot be empty')
     .trim()
     .notEmpty()

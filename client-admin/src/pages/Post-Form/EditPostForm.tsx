@@ -106,7 +106,7 @@ const PostForm = () => {
           e.preventDefault();
           await updatePost();
         }}>
-          Update Post</button>       
+          Update Post</button>
       </form>
     </>
   )

@@ -74,7 +74,7 @@ const PostForm = () => {
   return (
     <>
       {hasBeenPosted && <span className = "success">Your post has been successfully created.</span>}
-      {hasErrors && <span className = "error">Please make sure all fields are filled out.</span>}
+      {hasErrors && <span className = "error">Please make sure all fields are filled out.</span>}   
       <form className = {formStyles.form}>
         <label htmlFor="title">Title<RequiredAsterisk /></label>
         <input type = "text" id = "title" name = "title" value = {title} onChange = {(e) => changeTitle(e)}/>
@@ -92,7 +92,7 @@ const PostForm = () => {
           e.preventDefault();
           await createPost();
         }}>
-          Create Post</button>       
+          Create Post</button>
       </form>
     </>
   )

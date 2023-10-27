@@ -30,3 +30,8 @@
 .ql-editor {
   padding: 4px 8px;
 }
+
+.ql-container {
+  max-height: 40vh;
+  overflow-y: scroll;
+}

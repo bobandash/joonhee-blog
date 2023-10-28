@@ -1,6 +1,7 @@
 export interface postProps {
   title: string,
   content: string,
+  summary: string,
   isVisible: boolean,
   dateFormatted: string
 }

@@ -12,7 +12,8 @@ const PostPage = () => {
     title: '',
     content: '',
     isVisible: true,
-    dateFormatted: ''
+    dateFormatted: '',
+    summary: ''
   }
 
   const {postId} = useParams();

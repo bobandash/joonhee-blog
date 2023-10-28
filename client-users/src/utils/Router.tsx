@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import App from './App.tsx'
 import PostPage from "../pages/Posts/PostPage.tsx"
+import About from "../pages/About/About.tsx"
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -15,6 +16,9 @@ const Router = () => {
     {
       path: "/:postId",
       element: <PostPage />
+    }, {
+      path: "/about",
+      element: <About />
     }
   ])
 

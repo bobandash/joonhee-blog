@@ -1,0 +1,27 @@
+.about-container {
+  margin-bottom: 50px !important;
+}
+
+.about-container p {
+  font-size: 18px;
+}
+
+.about-container img {
+  border: 2px solid black;
+  width: 100%;
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+.content a {
+  color: rgb(208, 166, 80);
+}
+
+.content a:hover{ 
+  text-decoration: underline;
+}

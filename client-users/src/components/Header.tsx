@@ -9,9 +9,8 @@ function Header(){
           <a href = "/">Joonhee Bock</a>
         </p>
         <ul className = {styles["nav-items"]}>
-          <li><a href="">About</a></li>
+          <li><a href="/about">About</a></li>
           <li><a href="">Posts</a></li>
-          <li><a href="">Contact</a></li>
         </ul>
       </div>
     </header>

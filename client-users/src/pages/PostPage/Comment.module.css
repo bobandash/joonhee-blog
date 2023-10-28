@@ -1,0 +1,36 @@
+
+.comment-wrapper {
+  background-color: #f6f6f6;
+  border-radius: 10px;
+}
+
+.comment {
+  padding: 20px 5%;
+  margin-top: 10px;
+}
+
+.comment p {
+  margin: 0;
+}
+
+.same-line {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.message {
+  margin: 0;
+  font-size: 18px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+
+@media screen and (min-width: 800px) {
+  .comment-wrapper {
+    background-color: white;
+  }
+}

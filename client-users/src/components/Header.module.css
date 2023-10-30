@@ -4,7 +4,7 @@ a {
 }
 
 .header {
-  background-color: lightgray;
+  background-color: black;
   font-size: 24px;
 }
 
@@ -13,6 +13,10 @@ a {
   max-width: 1400px;
   display: flex;
   margin: 0 auto;
+}
+
+.container * {
+  color: white;
 }
 
 .name {
@@ -25,6 +29,7 @@ a {
   margin-left: auto;
   display: flex;
   list-style: none;
+  align-items: center;
 }
 
 .nav-items li a:hover {
@@ -33,4 +38,13 @@ a {
 
 .nav-items li:not(:first-child) {
   margin-left: 36px;
+}
+
+.joonhee-logo {
+  max-width: 120px;
+}
+
+.home-redirect {
+  display: flex;
+  align-items: center;
 }

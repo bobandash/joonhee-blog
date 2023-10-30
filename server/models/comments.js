@@ -25,7 +25,7 @@ const Comment = new Schema({
 });
 
 Comment.virtual("dateFormatted").get(function(){
-  return this.timestamp.toLocaleString(DateTime.DATETIME_MED)
+  return this.timestamp.toLocaleString(DateTime.DATE_MED)
 })
 
 module.exports = mongoose.model("Comment", Comment);

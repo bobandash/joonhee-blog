@@ -26,7 +26,7 @@ const Post = new Schema({
 })
 
 Post.virtual("dateFormatted").get(function(){
-  return this.timestamp.toLocaleString(DateTime.DATETIME_MED)
+  return this.timestamp.toLocaleString(DateTime.DATE_MED)
 })
 
 Post.set('toJSON', {virtuals: true})

@@ -12,7 +12,7 @@ exports.subscribe_mailing_list = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req).mapped();
     if(Object.keys(errors).length > 0){
-      res.json(errors);
+      res.send(400).json(errors);
     } else {
       // if email exists, then update subscribed status
       const email = await MailingList.findOne({email: req.body.email});

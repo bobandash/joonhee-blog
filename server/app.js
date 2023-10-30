@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
-/* app.use('/mailing', mailingListRouter); */
+app.use('/mailing', mailingListRouter);
 app.use('/posts', postsRouter);
 app.use('/comments', commentsRouter)
 

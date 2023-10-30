@@ -1,25 +1,65 @@
 .section-background {
-  background-color: lightcoral;
-  min-height: 15vh;
+  background-color: #244AA5;
   display: flex;
   align-items: center;
-
 }
 
 .email-newsletter {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 80%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 40px auto;
 }
 
 .email-newsletter label {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 18px;
+  color: white;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  text-transform: uppercase;
 }
 
+.input-and-button {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid gray;
+}
 
+.input-and-button * {
+  font-size: 24px;
+  border: none;
+  overflow: hidden;
+}
 
+.input-and-button input {
+  flex-grow: 1;
+  padding-left: 6px;
+}
 
+.input-and-button input:focus {
+  outline: none;
+}
+
+.input-and-button button {
+  padding-left: 10px;
+  background-color: #D0A650;
+  color: white;
+  padding: 5px 16px;
+}
+
+.input-and-button button:hover {
+  cursor: pointer;
+}
+
+.message {
+  align-self: flex-start; 
+}
+
+.form-elem-container {
+  width: 100%;
+  max-width: 600px;
+}

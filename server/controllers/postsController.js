@@ -6,9 +6,34 @@ const {body, validationResult} = require('express-validator');
 const verifyToken = require('../utils/verifyToken')
 
 exports.posts = asyncHandler(async (req, res, next) => {
-    const posts = await Post.find({}).sort({timeStamp: -1})
-    const postsWithVirtual = posts.map(post => post.toJSON())
-    res.json(postsWithVirtual);
+    if(Object.keys(req.query).length > 0){
+      const {sort, limit, title} = req.query;
+      const filter = {};
+      if(title){
+        filter.title = {
+          "$regex": title,
+          "$options": "i" 
+        }
+      }
+      let query = Post.find(filter);
+      if(sort){
+        if(sort === "descending"){
+          query = query.sort({timestamp: -1})
+        } else if (sort === "ascending"){
+          query = query.sort({timestamp: 1});
+        }
+      }
+      if(limit){
+        query = query.limit(Number(limit));
+      }
+      const posts = await query.exec();
+      const postsWithVirtual = posts.map(post => post.toJSON());
+      res.json(postsWithVirtual);
+    } else {
+      const posts = await Post.find({}).sort({timestamp: -1})
+      const postsWithVirtual = posts.map(post => post.toJSON())
+      res.json(postsWithVirtual);
+    }
   })
 
 exports.individual_post = asyncHandler(async (req, res, next) => {

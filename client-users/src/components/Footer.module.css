@@ -6,11 +6,14 @@
   margin-top: auto;
 }
 
+.footer:hover {
+  cursor: url(../assets/laufey_cursor.png), auto;
+}
+
 .nav-items {
   display: flex;
   flex-direction: column;
   text-align: center;
-
   padding: 0;
 }
 
@@ -44,9 +47,14 @@
     border: 1px solid black;
   }
 
+  .nav-items a {
+    transition: background-color 0.5s, color 0.5s;
+  }
+
   .nav-items a:hover {
     background-color: white;
-    color: black;  
+    color: black;
+    cursor: url(../assets/laufey_cursor.png), auto;
   }
   
 }

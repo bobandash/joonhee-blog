@@ -1,14 +1,11 @@
 import { useState } from "react";
-import ReactQuill from "react-quill";
-import 'react-quill/dist/quill.snow.css';
-import '../../main/quill.css'
 import formStyles from './Form.module.css'
 import { getJwt } from "../../utils/jwt";
 import { redirect404 } from "../../utils/redirect";
 import RequiredAsterisk from "../../components/RequiredAsterisk";
 import { useEffect } from 'react'
 import { useParams } from "react-router-dom";
-import { module } from "../../utils/quill.config";
+import RichTextEditor from "./RichTextEditor";
 import he from 'he'
 
 const PostForm = () => {
@@ -89,19 +86,14 @@ const PostForm = () => {
     <>
       {hasBeenUpdated && <span className = "success">Your post has been successfully updated.</span>}
       {hasErrors && <span className = "error">Please make sure all fields are filled out.</span>}
-      <form className = {formStyles.form}>
+      <form className = {formStyles.form} encType="multipart/form-data">
         <label htmlFor="title">Title<RequiredAsterisk /></label>
         <input type = "text" id = "title" name = "title" value = {post.title} onChange = {handleChange}/>
         <label htmlFor="summary">Summary<RequiredAsterisk /></label>
         <textarea rows = {3} name = "summary" value = {post.summary} id = "summary" onChange = {handleChange}>
         </textarea>
         <label htmlFor="content">Content<RequiredAsterisk /></label>
-        <ReactQuill 
-          theme="snow" 
-          value={post.content}
-          onChange = {handleContentChange}
-          modules = {module}
-        />
+        <RichTextEditor handleChange = {handleContentChange} />
         <button type="submit" onClick = {async (e) => {
           e.preventDefault();
           await updatePost();

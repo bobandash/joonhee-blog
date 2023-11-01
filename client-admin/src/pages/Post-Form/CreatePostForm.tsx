@@ -1,11 +1,9 @@
 import { useState } from "react";
-import ReactQuill from "react-quill";
-import 'react-quill/dist/quill.snow.css';
-import '../../main/quill.css'
 import formStyles from './Form.module.css'
 import { getJwt } from "../../utils/jwt";
 import { redirect404 } from "../../utils/redirect";
 import RequiredAsterisk from "../../components/RequiredAsterisk";
+import RichTextEditor from "./RichTextEditor";
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
@@ -13,20 +11,6 @@ const PostForm = () => {
   const [content, setContent] = useState('');
   const [hasBeenPosted, setHasBeenPosted] = useState(false);
   const [hasErrors, setHasErrors] = useState(false);
-
-  const toolbarOptions = [
-    [{ header: [1, 2, 3, false] }],
-    ["bold", "italic", "underline", "strike"],
-    [{ script:  "sub" }, { script:  "super" }],
-    ["blockquote"],
-    [{ list:  "ordered" }, { list:  "bullet" }],
-    [{ indent:  "-1" }, { indent:  "+1" }, { align: [] }],
-    ["link", "image", "video"],
-    ["clean"],
-  ];
-  const module = {
-    toolbar: toolbarOptions,
-  }
 
   function changeTitle(e: React.FormEvent<HTMLInputElement>){
     setTitle(e.currentTarget.value);
@@ -75,19 +59,14 @@ const PostForm = () => {
     <>
       {hasBeenPosted && <span className = "success">Your post has been successfully created.</span>}
       {hasErrors && <span className = "error">Please make sure all fields are filled out.</span>}   
-      <form className = {formStyles.form}>
+      <form className = {formStyles.form} encType="multipart/form-data">
         <label htmlFor="title">Title<RequiredAsterisk /></label>
         <input type = "text" id = "title" name = "title" value = {title} onChange = {(e) => changeTitle(e)}/>
         <label htmlFor="summary">Summary<RequiredAsterisk /></label>
         <textarea rows = {3} name = "summary" value = {summary} id = "summary" onChange = {(e) => changeSummary(e)}>
         </textarea>
         <label htmlFor="content">Content<RequiredAsterisk /></label>
-        <ReactQuill 
-          theme="snow" 
-          value={content} 
-          onChange={changeContent} 
-          modules = {module}
-        />
+        <RichTextEditor handleChange = {changeContent} />
         <button type="submit" onClick = {async (e) => {
           e.preventDefault();
           await createPost();

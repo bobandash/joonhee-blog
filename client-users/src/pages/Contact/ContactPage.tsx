@@ -58,23 +58,24 @@ const ContactPage = () => {
   return (
     <>
       <Header />
-      <div className = "container">
-        <h1 className = "section-title">Contact Me</h1>
-        <p>Have any questions or want to connect? Feel free to leave me a message, and I'll get back to you as soon as I can!</p>
-        <form className = {styles["contact-form"]} noValidate>
-          <div className = {styles["content-container"]}>
-            <label htmlFor="email">Email:</label>
-            <input type = "email" name = "email" id = "email" autoComplete="off" value = {message.email} onChange = {(handleChange)}/>
-            <label htmlFor="subjectLine">Subject Line:</label>
-            <input type = "text" name = "subjectLine" id = "subjectLine" autoComplete="off" value = {message.subjectLine} onChange = {handleChange}/>
-            <label htmlFor="message">Message:</label>
-            <textarea rows={5} name = "message" id = "message" value = {message.message} onChange = {handleChange}/>
-            <button onClick = {async (e) => {
-              e.preventDefault();
-              await sendMessage();
-            }}>Send Message</button>
-          </div>
-        </form>
+      <div className = "container page-animation">
+          <h1 className = "section-title">Contact Me</h1>
+          <p>Have any questions or want to connect? Feel free to leave me a message, and I'll get back to you as soon as I can!</p>
+          <form className = {styles["contact-form"]} noValidate>
+            <div className = {styles["content-container"]}>
+              <label htmlFor="email">Email:</label>
+              <input type = "email" name = "email" id = "email" autoComplete="off" value = {message.email} onChange = {(handleChange)}/>
+              <label htmlFor="subjectLine">Subject Line:</label>
+              <input type = "text" name = "subjectLine" id = "subjectLine" autoComplete="off" value = {message.subjectLine} onChange = {handleChange}/>
+              <label htmlFor="message">Message:</label>
+              <textarea rows={5} name = "message" id = "message" value = {message.message} onChange = {handleChange}/>
+              <button onClick = {async (e) => {
+                e.preventDefault();
+                await sendMessage();
+              }}>Send Message</button>
+            </div>
+          </form>
+        </div>
         {messageSent && <span className = "success">Your message has been sent to Joonhee.</span>}
         {isInvalid && <span className = "error">Error: Make sure all the fields are filled out and in the correct format.</span>}
       </div>

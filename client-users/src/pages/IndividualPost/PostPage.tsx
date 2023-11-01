@@ -4,8 +4,10 @@ import {useState, useEffect} from 'react';
 import {postProps, commentsProps} from '../../models/interface'
 import Footer from "../../components/Footer";
 import PostSection from "./PostSection";
-import styles from './PostPage.module.css'
 import CommentSection from "./CommentSection";
+import ErrorPage from "../Error/ErrorPage";
+import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import styles from './PostPage.module.css'
 
 const PostPage = () => {
   const samplePost = {
@@ -13,13 +15,15 @@ const PostPage = () => {
     content: '',
     isVisible: true,
     dateFormatted: '',
-    summary: ''
+    summary: '',
+    id: ''
   }
 
   const {postId} = useParams();
   const [post, setPost] = useState<postProps>(samplePost);
   const [comments, setComments] = useState<commentsProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   async function updateComments(){
     try {
@@ -30,7 +34,7 @@ const PostPage = () => {
       const data = await response.json();
       setComments(data);
     } catch {
-      // TO-DO: add 404 page
+      setHasError(true);
     }
   }  
 
@@ -45,7 +49,7 @@ const PostPage = () => {
         const data = await response.json();
         setPost(data);
       } catch {
-        // TO-DO: add 404 page
+        setHasError(true);
       }
     }
 
@@ -58,7 +62,7 @@ const PostPage = () => {
         const data = await response.json();
         setComments(data);
       } catch {
-        // TO-DO: add 404 page
+        setHasError(true);
       }
     }  
 
@@ -70,25 +74,27 @@ const PostPage = () => {
   }, [postId])
 
   if(!post.isVisible){
-    // TO-DO: add 404 error
-    return(<div>404</div>);
+    return <ErrorPage />
+  }
+
+  if(hasError){
+    return (<ErrorPage errorStatus = {500} />)
   }
 
   if(isLoading){
-    return(<div>Loading</div>)
+    return(<LoadingScreen />)
   }
 
   return(
     <>
-      <div className= {styles["bg-color-container"]}>
-        <Header />
-        <div className="container">
+      <Header />
+      <div className="container">
+        <div className = {styles["post-container"]}>
           <PostSection post = {post}/>
           <CommentSection comments = {comments} getLatestComments = {updateComments} />
         </div>
-        <Footer />
       </div>
-
+      <Footer />
     </>
 
   )

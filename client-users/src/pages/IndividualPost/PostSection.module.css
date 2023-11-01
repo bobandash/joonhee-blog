@@ -1,14 +1,18 @@
 .post {
   margin-top: 40px;
   margin-bottom: 50px;
-  background-color: white;
+  background-color: #f6f6f6;
 }
 
 .title {
-  font-size: 54px;
+  font-size: 42px;
   margin: 0px;
   color: #244AA5;
-  line-height: 60px;
+  line-height: 42px;
+}
+
+.post img {
+  max-width: 100%;
 }
 
 .author {
@@ -48,15 +52,15 @@
   font-size: 20px;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1000px) {
   .title {
-    font-size: 60px;
+    font-size: 54px;
+    line-height: 60px;
   }
   .post {
     padding: 30px 10%;
-  }
-
-  .post {
     border-radius: 30px;
+    background-color: white;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
   }
 }

@@ -13,8 +13,8 @@ const CommentSection: FC<CommentSectionProps>= ({comments, getLatestComments}) =
   return(
     <>
       <section className = {styles.comment}>
-        <CommentForm getLatestComments = {getLatestComments}/>
         <h1>Comments</h1>
+        <CommentForm getLatestComments = {getLatestComments}/>
         {comments.length === 0 && 
           <h2>Be the first to comment!</h2>
         }

@@ -32,8 +32,13 @@ a {
   align-items: center;
 }
 
+.nav-items li a {
+  color: white;
+}
+
 .nav-items li a:hover {
-  text-decoration: underline;
+  color: #D0A650;
+  transition: color 0.1s linear 0.1s;
 }
 
 .nav-items li:not(:first-child) {

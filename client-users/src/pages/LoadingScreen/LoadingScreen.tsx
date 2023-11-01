@@ -1,4 +1,4 @@
-import { PacmanLoader } from "react-spinners";
+import { BeatLoader } from "react-spinners";
 import { CSSProperties } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -16,7 +16,7 @@ function LoadingScreen() {
   return (
     <>
       <Header />
-      <PacmanLoader
+      <BeatLoader
         color={"#009959"}
         loading={true}
         cssOverride={override}

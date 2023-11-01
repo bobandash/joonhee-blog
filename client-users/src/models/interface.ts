@@ -3,7 +3,8 @@ export interface postProps {
   content: string,
   summary: string,
   isVisible: boolean,
-  dateFormatted: string
+  dateFormatted: string,
+  id: string
 }
 
 export interface commentsProps {

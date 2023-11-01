@@ -3,31 +3,51 @@ import Footer from '../components/Footer'
 import LandingScreen from '../pages/Home/LandingScreen'
 import LatestPosts from '../pages/Home/LatestPosts'
 import Notification from '../pages/Home/Notification'
-import Meme from '../pages/Home/Meme'
+import {useState, useEffect} from 'react'
+import { postProps } from '../models/interface'
+import LoadingScreen from '../pages/LoadingScreen/LoadingScreen'
+import ErrorPage from '../pages/Error/ErrorPage'
 
 function App() {
-  // TO-DO: change to fetch to backend
-  const posts = [
-    {
-      date: "10/14/2023",
-      summary: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste quibusdam vero pariatur assumenda dolores soluta et tempora fugiat praesentium atque velit, similique itaque nobis aperiam dicta enim officiis in? Soluta! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste quibusdam vero pariatur assumenda dolores soluta et tempora fugiat praesentium atque velit, similique itaque nobis aperiam dicta enim officiis in? Soluta!",
-      name: "Start of Journey",
-      image: "http://www.pixelstalk.net/wp-content/uploads/2016/03/Free-download-Pikachu-wallpaper-HD.jpg"
-    },
-    {
-      date: "10/14/2023",
-      summary: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste quibusdam vero pariatur assumenda dolores soluta et tempora fugiat praesentium atque velit, similique itaque nobis aperiam dicta enim officiis in? Soluta!",
-      name: "Start of Journey",
-      image: "http://www.pixelstalk.net/wp-content/uploads/2016/03/Free-download-Pikachu-wallpaper-HD.jpg"
-    }, 
-    {
-      date: "10/14/2023",
-      summary: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste quibusdam vero pariatur assumenda dolores soluta et tempora fugiat praesentium atque velit, similique itaque nobis aperiam dicta enim officiis in? Soluta!",
-      name: "Start of Journey",
-      image: "http://www.pixelstalk.net/wp-content/uploads/2016/03/Free-download-Pikachu-wallpaper-HD.jpg"
-    },
-  ]
-  
+
+  const [posts, setPosts] = useState<postProps[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+  useEffect(() => {
+    async function getPosts(){
+      try {
+        const params = {
+          limit: "4",
+          sort: "descending"
+        }
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_PORT}/posts?` + new URLSearchParams(params), {
+          method: "GET",
+          mode: "cors",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        })
+        const data = await response.json();
+        const visiblePosts = data.filter((post : postProps) => post.isVisible);
+        setPosts(visiblePosts);
+        setIsLoading(false);
+      } catch {
+        setHasError(true);
+        setIsLoading(false);
+      }
+    }
+    getPosts();
+  }, [])
+
+  if(isLoading){
+    <LoadingScreen />
+  }
+
+  if(hasError){
+    <ErrorPage errorStatus={500} />
+  }
+
   return (
     <>
       <Header />
@@ -35,7 +55,6 @@ function App() {
       <LatestPosts posts = {posts} />
       <Notification />
       <Footer />
-{/*       <Meme /> */}
     </>
   )
 }

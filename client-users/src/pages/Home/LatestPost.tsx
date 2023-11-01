@@ -1,19 +1,30 @@
 import styles from './LatestPost.module.css'
-//TO-DO: figure out how to cut length of post summary text depending on screen width
+import { postProps } from '../../models/interface';
+import {FC, useEffect} from 'react'
+import he from 'he';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
-function LatestPost({post}){
+interface LatestPostProps {
+  post: postProps;
+}
+
+const LatestPost: FC<LatestPostProps> = ({post}) => {
+  function redirectPost(){
+    window.location.href = `/${post.id}`;
+  }
+  
+  useEffect(() => {
+    Aos.init({
+      once: true
+    });
+  }, [])
+
   return(
-    <div className = {styles.post}>
-      <div className = {styles["image-container"]}>
-        <img src = {post.image}/>
-      </div>
-      <div className = {styles["post-info-container"]}>
-        <h2 className = {styles["post-name"]}>
-          <a href = "">{post.name}</a>
-        </h2>
-        <p className = {styles["post-date"]}>{post.date}</p>
-        <p className = {styles["post-summary"]}>{post.summary}</p>
-      </div>
+    <div onClick = {redirectPost} className = {styles.post} data-aos = "fade-right" data-aos-delay = "50" data-aos-duration="1000">
+      <h2 className = {styles["post-name"]}>{he.decode(post.title)}</h2>
+      <p className = {styles["post-date"]}>Posted on: {he.decode(post.dateFormatted)}</p>
+      <p className = {styles["post-summary"]}>{he.decode(post.summary)}</p>
     </div>
   )
 }

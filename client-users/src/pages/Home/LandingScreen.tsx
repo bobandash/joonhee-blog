@@ -1,14 +1,15 @@
 import styles from './LandingScreen.module.css'
+import kosovoFlag from '../../assets/kosovo flag.jpg'
+import joonhee from '../../assets/joon_transparent_background.png'
 
 function LandingScreen(){
   return (
     <div className = {styles["container"]}>
-      <div className = {styles["location-time-container"]}>
-        <p>Kansas City 2001</p>
-        <p>California 2002 - 2019</p>
-        <p>South Bend, Indiana 2019 - 2023</p>
-        <p>Kosovo 2023 - 2025</p>
+      <div className = {styles["name-container"]}>
+        <h1 className = {styles["name"]}><span className = {styles["first-name"]}>Joonhee</span> <span className = {styles["last-name"]}>Bock</span></h1>
       </div>
+      <img className = {styles["kosovo-flag"]} src = {kosovoFlag} alt = "kosovo flag" />
+      <img className = {styles["joonhee"]} src = {joonhee} alt = "joonhee" />
     </div>
   )
 }

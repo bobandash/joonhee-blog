@@ -1,17 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+
+
+:root {
+  --kosovo-flag-blue: rgb(36, 74, 165);
+  --kosovo-flag-white: #fff;
+  --kosovo-flag-gold: rgb(208, 166, 80);
+}
+
 .container {
-  min-height: 90vh;
-  background-color: lightgray;
+  min-height: 80vh;
+  background: var(--kosovo-flag-blue);
   position: relative;
+}
+
+.container * {
+  color: white;
 }
 
 /* figure out what to do about this after you have an image */
 /* TO-DO add animation to the text */
-.location-time-container {
-  position: relative;
+.name-container {
+  position: absolute;
   top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.location-time-container p {
+
+@keyframes typing {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes move-left {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes move-right {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.name span {
+  display: inline-block;
+  text-align: center;
+  font-size: 64px;
+  font-family: 'Niconne', cursive;
+}
+
+.name {
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: 4px;
+  animation: typing 3s linear;
+  padding: 10px 8px;
+  position: relative;
+}
+
+.first-name {
+  animation: move-left 3s linear 3s forwards;
+}
+
+.last-name {
+  animation: move-right 3s linear 3s forwards;
+}
+
+.kosovo-flag {
+  width: 600px;
+  max-width: 100vw;
   position: absolute;
-  font-size: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: show 3s linear 3s forwards;
+}
+
+.joonhee {
+  position: absolute;
+  width: 600px;
+  max-width: 100vw;
+  bottom: 0;
+  right: 10%;
+  opacity: 1;
+/*   animation: show 0.5s ease-out 3s forwards; */
+}
+
+
+.animation-container {
+  position: relative;
+}
+
+.fill-bg {
+  position: absolute;
+  background-color: white;
+  width: 50%;
+  height: 50%;
 }

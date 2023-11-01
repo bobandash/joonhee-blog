@@ -78,7 +78,6 @@ const ContactPage = () => {
         </div>
         {messageSent && <span className = "success">Your message has been sent to Joonhee.</span>}
         {isInvalid && <span className = "error">Error: Make sure all the fields are filled out and in the correct format.</span>}
-      </div>
       <Footer />
     </>
   )

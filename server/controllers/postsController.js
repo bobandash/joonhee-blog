@@ -4,6 +4,8 @@ const Comment = require('../models/comments')
 const mongoose = require('mongoose');
 const {body, validationResult} = require('express-validator');
 const verifyToken = require('../utils/verifyToken')
+const multer = require('multer');
+const upload = multer({dest: 'uploads/'})
 
 exports.posts = asyncHandler(async (req, res, next) => {
     if(Object.keys(req.query).length > 0){
@@ -132,5 +134,15 @@ exports.toggle_individual_post_visibility = [
     })
     const newPost = await Post.findById(postId);
     res.json(newPost);
+  })
+]
+
+exports.add_image_to_server = [
+  verifyToken,
+  upload.single('image'),
+  asyncHandler(async (req, res, next) => {
+    const fileName = req.file.filename;
+    const filePath = path.join(__dirname, 'uploads', fileName)
+    res.json({data: {url: filePath}})
   })
 ]

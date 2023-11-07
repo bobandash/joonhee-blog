@@ -16,9 +16,7 @@ router.put('/:postId/update', postController.edit_individual_post);
 router.put('/:postId/update/visibility', postController.toggle_individual_post_visibility);
 router.delete('/:postId/delete', postController.delete_individual_post)
 router.delete('/:postId/comments/:commentId/delete', commentsController.delete_individual_comment)
-
-
-
+router.post('/add-image', postController.add_image_to_server);
 
 
 module.exports = router;

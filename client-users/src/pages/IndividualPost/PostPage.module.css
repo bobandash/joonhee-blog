@@ -3,16 +3,3 @@
     background-color: #f6f6f6;
   }
 }
-
-.post-container {
-  animation: popupText 0.6s ease-in 1;
-}
-  
-@keyframes popupText {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}

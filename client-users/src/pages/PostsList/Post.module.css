@@ -1,0 +1,54 @@
+.post-container:hover {
+  cursor: pointer;
+}
+
+
+.post-container {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+}
+
+.post-container:hover {
+  cursor: pointer;
+}
+
+.post-container * {
+  margin: 0;
+}
+
+.title {
+  font-size: 36px;
+}
+
+.date {
+  margin-top: -4px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.summary {
+  margin-top: 6px;
+  font-size: 18px;
+}
+
+.posts-container {
+  margin: 18px 0px 40px 0px;
+}
+.posts-container > div:first-child {
+  margin-top: 10px;
+}
+
+.posts-container > div:nth-child(n + 2) {
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 800px) {
+  .posts-container > div:first-child {
+    margin-top: 10px;
+  }
+  
+  .posts-container > div:nth-child(n + 2) {
+    margin-top: 30px;
+  }
+}

@@ -5,7 +5,16 @@ const mongoose = require('mongoose');
 const {body, validationResult} = require('express-validator');
 const verifyToken = require('../utils/verifyToken')
 const multer = require('multer');
-const upload = multer({dest: 'uploads/'})
+const path = require('path');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + ' ' + file.originalname)
+  }
+})
+const upload = multer({storage: storage})
 
 exports.posts = asyncHandler(async (req, res, next) => {
     if(Object.keys(req.query).length > 0){
@@ -141,8 +150,8 @@ exports.add_image_to_server = [
   verifyToken,
   upload.single('image'),
   asyncHandler(async (req, res, next) => {
-    const fileName = req.file.filename;
-    const filePath = path.join(__dirname, 'uploads', fileName)
-    res.json({data: {url: filePath}})
+    const fullFilePath = req.file.path;
+    // TO-DO: change port
+    res.json({data: {url: fullFilePath}})
   })
 ]

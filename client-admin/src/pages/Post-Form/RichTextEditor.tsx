@@ -5,10 +5,16 @@ import ImageResize from 'quill-image-resize-module-react';
 import { useMemo } from "react";
 import { getJwt } from "../../utils/jwt";
 import { useRef } from "react";
+import { FC } from "react";
 
 Quill.register('modules/imageResize', ImageResize);
 
-const RichTextEditor = ({handleChange}) => {
+interface RichTextEditorProps {
+  handleChange: (value: string) => void,
+  value?: string
+}
+
+const RichTextEditor:FC<RichTextEditorProps> = ({handleChange, value}) => {
   const QuillRef = useRef(null);
   const module = useMemo(
     () => (
@@ -33,7 +39,6 @@ const RichTextEditor = ({handleChange}) => {
               input.onchange = async () => { 
                 const file = input.files ? input.files[0] : null;
                 if(file !== null && QuillRef.current !== null){
-                  console.log(QuillRef.current);
                   const editor = QuillRef.current.getEditor()
                   const formData = new FormData();
                   formData.append('image', file);
@@ -61,7 +66,19 @@ const RichTextEditor = ({handleChange}) => {
         }
       }
     ), [])
-    
+  
+  if(value){
+    return(
+      <ReactQuill 
+        ref = {QuillRef}
+        theme="snow" 
+        modules = {module}
+        onChange = {handleChange}
+        value = {value}
+      />
+    )
+  }
+
   return (
     <ReactQuill 
       ref = {QuillRef}

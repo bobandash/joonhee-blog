@@ -93,7 +93,7 @@ const PostForm = () => {
         <textarea rows = {3} name = "summary" value = {post.summary} id = "summary" onChange = {handleChange}>
         </textarea>
         <label htmlFor="content">Content<RequiredAsterisk /></label>
-        <RichTextEditor handleChange = {handleContentChange} />
+        <RichTextEditor handleChange = {handleContentChange} value = {post.content}/>
         <button type="submit" onClick = {async (e) => {
           e.preventDefault();
           await updatePost();

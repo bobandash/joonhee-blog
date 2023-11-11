@@ -4,6 +4,7 @@ import { PostItems } from "./Post.interface";
 import DeleteModal from "./DeleteModal";
 import { redirect404 } from "../../utils/redirect";
 import CreatePostBtn from "./CreatePostBtn";
+import Searchbar from "../../components/Searchbar";
 
 const Posts = () => {
   const [posts, setPosts] = useState<PostItems[]>([]);
@@ -16,6 +17,7 @@ const Posts = () => {
     id: '',
     isVisible: true,
   });
+  const [titleQuery, setTitleQuery] = useState('');
 
   function toggleDeleteModal(){
     setDeleteModalActive(!deleteModalActive);
@@ -25,10 +27,16 @@ const Posts = () => {
     setPostToDelete({...postToDelete});
   }
 
+  function handleTitleQuery(query: string){
+    setTitleQuery(query);
+  }
+
   // Function that needs to be called to update posts
   async function getPosts(){
     try{
-      const response = await fetch(import.meta.env.VITE_BACKEND_PORT + '/posts', {
+      const response = await fetch(import.meta.env.VITE_BACKEND_PORT + '/posts?' + new URLSearchParams({
+        title: titleQuery
+      }), {
         method: "GET",
         mode: "cors",
         headers: {
@@ -43,11 +51,33 @@ const Posts = () => {
       redirect404();
     }
   }
+  getPosts();
 
   useEffect(() => {
-    getPosts();
-  }, [])
+    // Function that needs to be called to update posts
+    async function getQueryPosts(){
+      try{
+        const response = await fetch(import.meta.env.VITE_BACKEND_PORT + '/posts?' + new URLSearchParams({
+          title: titleQuery
+        }), {
+          method: "GET",
+          mode: "cors",
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+        })
+        const data = await response.json();
+        setPosts(data);
+      }
+      catch {
+        redirect404();
+      }
+    }
+    getQueryPosts();
+  }, [titleQuery])
 
+  
   if(deleteModalActive){
     return (<DeleteModal 
       post = {postToDelete} 
@@ -59,6 +89,7 @@ const Posts = () => {
   return (
     <div className = "container">
       <CreatePostBtn />
+      <Searchbar handleTitleQuery={handleTitleQuery} />
       {posts.map((post) => 
         <PostComponent 
           post = {post} 

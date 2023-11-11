@@ -26,6 +26,10 @@
   position: relative;
 }
 
+.modal-contents img {
+  max-width: 100%;
+}
+
 .post-title {
   margin: 0;
 }

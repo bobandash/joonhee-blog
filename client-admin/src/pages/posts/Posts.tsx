@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import PostComponent from "./Post";
 import { PostItems } from "./Post.interface";
 import DeleteModal from "./DeleteModal";
 import { redirect404 } from "../../utils/redirect";
 import CreatePostBtn from "./CreatePostBtn";
 import Searchbar from "../../components/Searchbar";
+import LoadingDiv from "../../components/LoadingScreen";
 
 const Posts = () => {
   const [posts, setPosts] = useState<PostItems[]>([]);
@@ -18,6 +19,8 @@ const Posts = () => {
     isVisible: true,
   });
   const [titleQuery, setTitleQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
 
   function toggleDeleteModal(){
     setDeleteModalActive(!deleteModalActive);
@@ -31,12 +34,9 @@ const Posts = () => {
     setTitleQuery(query);
   }
 
-  // Function that needs to be called to update posts
   async function getPosts(){
     try{
-      const response = await fetch(import.meta.env.VITE_BACKEND_PORT + '/posts?' + new URLSearchParams({
-        title: titleQuery
-      }), {
+      const response = await fetch(import.meta.env.VITE_BACKEND_PORT + '/posts', {
         method: "GET",
         mode: "cors",
         headers: {
@@ -46,16 +46,19 @@ const Posts = () => {
       })
       const data = await response.json();
       setPosts(data);
+      setIsLoading(false);
     }
     catch {
       redirect404();
     }
   }
-  getPosts();
 
   useEffect(() => {
-    // Function that needs to be called to update posts
-    async function getQueryPosts(){
+    getPosts();
+  }, [])
+
+  useMemo(() => {
+    async function getPosts(){
       try{
         const response = await fetch(import.meta.env.VITE_BACKEND_PORT + '/posts?' + new URLSearchParams({
           title: titleQuery
@@ -69,15 +72,20 @@ const Posts = () => {
         })
         const data = await response.json();
         setPosts(data);
+        setIsLoading(false);
       }
       catch {
         redirect404();
       }
     }
-    getQueryPosts();
+    getPosts();
   }, [titleQuery])
 
   
+  if(isLoading){
+    return(<LoadingDiv />)
+  }
+
   if(deleteModalActive){
     return (<DeleteModal 
       post = {postToDelete} 

@@ -6,10 +6,12 @@ import { getJwt } from "../../utils/jwt";
 import Header from "../../components/Header";
 import { navItems } from "../../utils/constants";
 import Footer from "../../components/Footer";
+import LoadingDiv from "../../components/LoadingScreen";
 
 const CommentsPage = () => {
   const [comments, setComments] = useState<CommentsProps[]>([]);
-  
+  const [isLoading, setIsLoading] = useState(true);
+
   // Function that needs to be called to update posts
   async function getComments(){
     try{
@@ -24,6 +26,7 @@ const CommentsPage = () => {
       })
       const data = await response.json();
       setComments(data);
+      setIsLoading(false);
     }
     catch {
       redirect404();
@@ -33,6 +36,14 @@ const CommentsPage = () => {
   useEffect(() => {
     getComments();
   }, [])
+
+  if(isLoading){
+    <>
+      <Header active = {navItems.COMMENTS}/>
+      <LoadingDiv />
+      <Footer isAbsolute = {false}/>
+    </>
+  }
 
   return (
     <>

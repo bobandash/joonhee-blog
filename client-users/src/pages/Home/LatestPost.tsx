@@ -11,7 +11,7 @@ interface LatestPostProps {
 
 const LatestPost: FC<LatestPostProps> = ({post}) => {
   function redirectPost(){
-    window.location.href = `/${post.id}`;
+    window.location.href = `/posts/${post.id}`;
   }
   
   useEffect(() => {

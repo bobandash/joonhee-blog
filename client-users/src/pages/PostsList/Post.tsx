@@ -10,7 +10,7 @@ interface PostComponentProps {
 
 const PostComponent: FC<PostComponentProps> = ({post}) => {
   function redirectPost(){
-    window.location.href = `/${post.id}`;
+    window.location.href = `/posts/${post.id}`;
   }
 
   useEffect(() => {

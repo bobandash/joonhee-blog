@@ -14,7 +14,7 @@ const LatestPosts:FC<LatestPostsProps> = ({posts}) => {
         <h1 className = {styles["section-header"]}>Latest Posts</h1>
         <div className = {styles["posts-container"]}>
           {posts.map(post => (
-            <LatestPost post = {post} />
+            <LatestPost key = {post.id} post = {post} />
           ))}
         </div>
       </div>

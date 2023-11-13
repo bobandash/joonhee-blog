@@ -1,14 +1,14 @@
-import ReactQuill, { Quill } from "react-quill";
+import ReactQuill/* , { Quill } */ from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import '../../main/quill.css'
-import ImageResize from 'quill-image-resize-module-react';
+/* import ImageResize from 'quill-image-resize-module-react'; */
 import { useMemo } from "react";
 import { getJwt } from "../../utils/jwt";
 import { useRef } from "react";
 import { FC } from "react";
 import type QuillType from 'react-quill'
 
-Quill.register('modules/imageResize', ImageResize);
+/* Quill.register('modules/imageResize', ImageResize); */
 
 interface RichTextEditorProps {
   handleChange: (value: string) => void,
@@ -63,10 +63,10 @@ const RichTextEditor:FC<RichTextEditorProps> = ({handleChange, value}) => {
             },
           }
         },
-        imageResize: {
+/*         imageResize: {
           parchment: Quill.import('parchment'),
           modules: ['Resize', 'DisplaySize']
-        }
+        } */
       }
     ), [])
   

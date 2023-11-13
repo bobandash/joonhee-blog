@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { getJwt } from "../../utils/jwt";
 import { useRef } from "react";
 import { FC } from "react";
+import type QuillType from 'react-quill'
 
 Quill.register('modules/imageResize', ImageResize);
 
@@ -15,7 +16,7 @@ interface RichTextEditorProps {
 }
 
 const RichTextEditor:FC<RichTextEditorProps> = ({handleChange, value}) => {
-  const QuillRef = useRef(null);
+  const QuillRef = useRef<QuillType>(null);
   const module = useMemo(
     () => (
       {
@@ -54,7 +55,9 @@ const RichTextEditor:FC<RichTextEditorProps> = ({handleChange, value}) => {
                   const data = await response.json();
                   const imageUrl = data.data.url;
                   const range = editor.getSelection();
-                  editor.insertEmbed(range.index, 'image', `${import.meta.env.VITE_BACKEND_PORT}/${imageUrl}`);
+                  if(range !== null){
+                    editor.insertEmbed(range.index, 'image', `${import.meta.env.VITE_BACKEND_PORT}/${imageUrl}`);
+                  }
                 }
               }
             },

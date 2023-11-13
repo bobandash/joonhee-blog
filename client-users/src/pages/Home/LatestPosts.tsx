@@ -1,9 +1,10 @@
 import styles from './LatestPosts.module.css'
 import LatestPost from './LatestPost'
 import {FC} from 'react';
+import { postProps } from '../../models/interface';
 
 interface LatestPostsProps {
-  posts: []; 
+  posts: postProps[]
 }
 
 const LatestPosts:FC<LatestPostsProps> = ({posts}) => {

@@ -50,7 +50,7 @@ function AllPostsPage() {
         <h1 className = "section-title">Posts</h1>
         <div className = {styles["posts-container"]}>
           {posts.map((post) => (
-            <PostComponent post = {post} />
+            <PostComponent key = {post.id} post = {post} />
           ))}
         </div>
       </div>

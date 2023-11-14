@@ -2,6 +2,8 @@
 ## Description:
 A full-stack web application made for my friend, who can use this blog to post his experiences in Kosovo for the Peace Corps. This was also conveniently done as a project in [The Odin Project]([url](https://www.theodinproject.com/lessons/nodejs-blog-api)). The code is separated into three folders (client-users, client-admin, and server), hosting the user side, admin side, and server backend, respectively.
 
+## Preview:
+
 ## Live View:
 - Admin-Side: https://joonheebockadmin.netlify.app/
 - User-Side: https://joonheebock.netlify.app/

@@ -31,6 +31,7 @@ If I were to come back to this project in the future, I would want to:
 - Add more features in the comments section (custom emojis and gifs)
 - Add a user login for Joonhee, in case he wants to personally reply to comments and mark his message
 - Add Mailchimp integration to inform readers when he makes a new post
+- Preview Page for Joonhee to see how his page would look like before he hits post
 
 
 

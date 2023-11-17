@@ -24,7 +24,17 @@ const ContactMessages = new Schema({
 })
 
 ContactMessages.virtual("dateFormatted").get(function(){
-  return this.timestamp.toLocaleString(DateTime.DATE_MED)
+  const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  if (userTimeZone) {
+    return formattedTimestamp = new Intl.DateTimeFormat('default', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: 'numeric',
+      minute: 'numeric',
+    }).format(this.timestamp);
+  }
+  return this.timestamp.toLocaleString(DateTime.DATE_MED);
 })
 
 module.exports = mongoose.model("ContactMessages", ContactMessages);

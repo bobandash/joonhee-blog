@@ -26,6 +26,16 @@ const Post = new Schema({
 })
 
 Post.virtual("dateFormatted").get(function(){
+  const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  if (userTimeZone) {
+    return formattedTimestamp = new Intl.DateTimeFormat('default', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: 'numeric',
+      minute: 'numeric',
+    }).format(this.timestamp);
+  }
   return this.timestamp.toLocaleString(DateTime.DATE_MED);
 })
 

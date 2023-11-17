@@ -26,7 +26,6 @@
   transform: translate(-50%, -50%);
 }
 
-
 @keyframes typing {
   from {
     width: 0%;
@@ -70,7 +69,7 @@
 .name span {
   display: inline-block;
   text-align: center;
-  font-size: 64px;
+  font-size: 48px;
   font-family: 'Niconne', cursive;
 }
 
@@ -122,4 +121,10 @@
   background-color: white;
   width: 50%;
   height: 50%;
+}
+
+@media screen and (min-width: 750px) {
+  .name {
+    font-size: 64px;
+  }
 }

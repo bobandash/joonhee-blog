@@ -58,7 +58,7 @@ const ContactPage = () => {
   return (
     <>
       <Header />
-      <div className = "container page-animation">
+      <div className = {`container page-animation`}>
           <h1 className = "section-title">Contact Me</h1>
           <p>Have any questions or want to connect? Feel free to leave me a message, and I'll get back to you as soon as I can!</p>
           <form className = {styles["contact-form"]} noValidate>

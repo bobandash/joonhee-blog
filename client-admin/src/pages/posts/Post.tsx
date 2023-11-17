@@ -4,11 +4,12 @@ import styles from './Post.module.css'
 import he from 'he';
 import { getJwt } from '../../utils/jwt';
 import { redirect404 } from '../../utils/redirect';
+import { useNavigate } from 'react-router-dom';
 
 const PostComponent: FC<PostItemsProps> = ({post, toggleModal, setPostToDelete, updatePosts}) => {
-
+  const navigate = useNavigate();
   function editPost(){
-    window.location.href = "/post/edit/" + post.id;
+    navigate("/post/edit/" + post.id);
   }
 
   async function toggleVisibility(){

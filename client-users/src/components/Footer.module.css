@@ -37,7 +37,7 @@
   color: white;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 750px) {
   .nav-items {
     flex-direction: row;
     justify-content: space-around;

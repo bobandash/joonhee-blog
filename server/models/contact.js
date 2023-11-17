@@ -19,7 +19,7 @@ const ContactMessages = new Schema({
   },
   messageDate: {
     type: Date,
-    default: new Date()
+    default: Date.now()
   }
 })
 

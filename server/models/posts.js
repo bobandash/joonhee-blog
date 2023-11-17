@@ -17,7 +17,7 @@ const Post = new Schema({
   },
   timestamp: {
     type: Date,
-    default: new Date()
+    default: Date.now()
   },
   isVisible: {
     type: Boolean,

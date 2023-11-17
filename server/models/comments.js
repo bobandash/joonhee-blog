@@ -18,7 +18,7 @@ const Comment = new Schema({
   },
   timestamp: {
     type: Date,
-    default: new Date()
+    default: () => Date.now()
   },
 }, {
   toJSON: {virtuals: true}

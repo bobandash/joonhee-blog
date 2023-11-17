@@ -14,7 +14,7 @@
 }
 
 .email-newsletter label {
-  font-size: 36px;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 18px;
@@ -30,9 +30,13 @@
 }
 
 .input-and-button * {
-  font-size: 24px;
+  font-size: 16px;
   border: none;
   overflow: hidden;
+}
+
+.input-and-button button {
+
 }
 
 .input-and-button input {
@@ -45,10 +49,10 @@
 }
 
 .input-and-button button {
-  padding-left: 10px;
   background-color: #D0A650;
   color: white;
   padding: 5px 16px;
+  min-width: fit-content;
 }
 
 .input-and-button button:hover {
@@ -62,4 +66,14 @@
 .form-elem-container {
   width: 100%;
   max-width: 600px;
+}
+
+@media screen and (min-width: 750px) {
+  .email-newsletter label {
+    font-size: 36px;
+  }
+
+  .input-and-button * {
+    font-size: 24px;
+  }
 }

@@ -40,6 +40,7 @@ const Router = () => {
     {
       path: "/",
       element: <App/>,
+      errorElement: <ErrorPage />
     },
     {
       path: "/404",

@@ -32,11 +32,13 @@ html, body {
   margin: 0;
 }
 
+
 .section-title {
-  font-size: 54px;
+  font-size: 42px;
+  margin-top: 24px;
+  text-align: center;
   color: #244AA5;
   line-height: 60px;
-  margin-top: 30px;
   margin-bottom: 0px;
 }
 
@@ -53,3 +55,11 @@ html, body {
   }
 }
 
+
+@media screen and (min-width: 750px){
+  .section-title {
+    font-size: 54px;
+    margin-top: 30px;
+    text-align: left;
+  }
+}

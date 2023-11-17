@@ -4,7 +4,8 @@ export interface postProps {
   summary: string,
   isVisible: boolean,
   dateFormatted: string,
-  id: string
+  id: string,
+  timestamp: string
 }
 
 export interface commentsProps {

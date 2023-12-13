@@ -1,6 +1,7 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import styles from "./About.module.css";
+import { Link } from "react-router-dom";
 const About = () => {
   return (
     <>
@@ -16,10 +17,9 @@ const About = () => {
               volunteer. I love to take photos, read, make music, and watch
               movies.
             </p>
-
             <p>
               If you have any questions about my journey or want to connect,
-              please feel free to <a href="/contact">contact me here</a>.
+              please feel free to <Link to="/contact">contact me here</Link>.
             </p>
             <p>
               The content of this website is mine alone and does not reflect the

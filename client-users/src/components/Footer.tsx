@@ -1,19 +1,29 @@
+import { Link } from "react-router-dom";
+import styles from "./Footer.module.css";
 
-import styles from './Footer.module.css'
-
-function Footer(){
+function Footer() {
   return (
-    <footer className = {styles["footer"]}>
-      <div className = {styles["container"]}>
-        <ul className = {styles["nav-items"]}>
-          <li><a href="/about">About</a></li>
-          <li><a target= "_blank" href="https://letterboxd.com/tada/">LetterBoxd</a></li>
-          <li><a href="/posts">Posts</a></li>
-          <li><a href="/contact">Contact</a></li>
+    <footer className={styles["footer"]}>
+      <div className={styles["container"]}>
+        <ul className={styles["nav-items"]}>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <a target="_blank" href="https://letterboxd.com/tada/">
+              LetterBoxd
+            </a>
+          </li>
+          <li>
+            <Link to="/posts">Posts</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
         </ul>
       </div>
     </footer>
-  )
+  );
 }
 
 export default Footer;

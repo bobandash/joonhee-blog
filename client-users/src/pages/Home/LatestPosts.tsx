@@ -8,6 +8,10 @@ interface LatestPostsProps {
 }
 
 const LatestPosts: FC<LatestPostsProps> = ({ posts }) => {
+  if (posts.length === 0) {
+    return <div></div>;
+  }
+
   return (
     <section>
       <div className={styles["container"]}>

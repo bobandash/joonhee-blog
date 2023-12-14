@@ -4,6 +4,7 @@ import he from "he";
 import styles from "./Post.module.css";
 import Aos from "aos";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "../../utils/formatDate";
 
 interface PostComponentProps {
   post: postProps;
@@ -11,10 +12,10 @@ interface PostComponentProps {
 
 const PostComponent: FC<PostComponentProps> = ({ post }) => {
   const navigate = useNavigate();
+  const formattedDate = formatDate(post.timestamp);
   function redirectPost() {
     navigate(`/posts/${post.id}`);
   }
-
   useEffect(() => {
     Aos.init({
       once: true,
@@ -30,7 +31,7 @@ const PostComponent: FC<PostComponentProps> = ({ post }) => {
       data-aos-duration="1000"
     >
       <h2 className={styles["title"]}>{he.decode(post.title)}</h2>
-      <h3 className={styles["date"]}>{post.dateFormatted}</h3>
+      <h3 className={styles["date"]}>{formattedDate}</h3>
       <p className={styles["summary"]}>{he.decode(post.summary)}</p>
     </div>
   );

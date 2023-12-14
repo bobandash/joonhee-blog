@@ -5,6 +5,7 @@ export interface postProps {
   isVisible: boolean;
   dateFormatted: string;
   id: string;
+  timestamp: Date;
 }
 
 export interface commentsProps {

@@ -17,6 +17,7 @@ const PostPage = () => {
     dateFormatted: "",
     summary: "",
     id: "",
+    timestamp: new Date(),
   };
 
   const { postId } = useParams();

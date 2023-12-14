@@ -4,13 +4,15 @@ import he from "he";
 import Parser from "html-react-parser";
 import styles from "./PostSection.module.css";
 import { Link } from "react-router-dom";
+import { formatDate } from "../../utils/formatDate";
 
 interface PostSectionProps {
   post: postProps;
 }
 
 const PostSection: FC<PostSectionProps> = ({ post }) => {
-  const { dateFormatted, title, content, isVisible } = { ...post };
+  const { timestamp, title, content, isVisible } = { ...post };
+  const dateFormatted = formatDate(timestamp);
 
   if (!isVisible) {
     return <div>404</div>;

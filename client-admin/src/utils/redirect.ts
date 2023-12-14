@@ -1,18 +1,17 @@
+import { useNavigate } from "react-router-dom";
 
-export const redirectHome = () => {
-  window.location.href = "/";
-}
-
-export const redirect404 = () => {
-  window.location.href = "/404";
-}
+export const Redirect404 = () => {
+  const navigate = useNavigate();
+  navigate("/404");
+};
 
 export const logout = async (getSignedInStatus: () => Promise<void>) => {
-  window.localStorage.setItem('jwt', '');
+  window.localStorage.setItem("jwt", "");
   await getSignedInStatus();
-  window.location.href = '/';
-}
+  window.location.href = "/";
+};
 
-export const redirectCreatePost = () => {
-  window.location.href = "/post/create"
-}
+export const RedirectCreatePost = () => {
+  const navigate = useNavigate();
+  navigate("/post/create");
+};

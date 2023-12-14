@@ -5,7 +5,7 @@ import CreatePostForm from "../pages/Post-Form/CreatePost.tsx";
 import EditPostPage from "../pages/Post-Form/EditPost.tsx";
 import CommentsPage from "../pages/Comments/Comments.tsx";
 import { useState, useEffect } from "react";
-import { redirect404 } from "../utils/redirect.ts";
+import { Redirect404 } from "../utils/redirect.ts";
 import { SignedInContext } from "./context.tsx";
 import Messages from "../pages/Messages/index.tsx";
 
@@ -32,7 +32,7 @@ const Router = () => {
         }
       }
     } catch {
-      redirect404();
+      Redirect404();
     }
   }
 

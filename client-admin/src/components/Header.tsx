@@ -2,10 +2,10 @@ import styles from "./Header.module.css";
 import { FC } from "react";
 import JoonheeLogo from "../assets/joonhee-logo.svg";
 import { navItems } from "../utils/constants";
-import { logout, redirectHome } from "../utils/redirect";
+import { logout } from "../utils/redirect";
 import { SignedInContext } from "../main/context";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   active: string;
@@ -13,11 +13,14 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ active }) => {
   const { isSignedIn, getSignedInStatus } = useContext(SignedInContext);
+  const navigate = useNavigate();
   if (!isSignedIn) {
     return (
       <header className={`${styles["header"]} ${styles["centered"]}`}>
         <img
-          onClick={redirectHome}
+          onClick={() => {
+            navigate("/");
+          }}
           className={`${styles["logo"]}`}
           src={JoonheeLogo}
         />
@@ -31,7 +34,9 @@ const Header: FC<HeaderProps> = ({ active }) => {
         <i className="white fa-solid fa-bars fa-2x"></i>
       </button>
       <img
-        onClick={redirectHome}
+        onClick={() => {
+          navigate("/");
+        }}
         className={styles["logo"]}
         src={JoonheeLogo}
       />

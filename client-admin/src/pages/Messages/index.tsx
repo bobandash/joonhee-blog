@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { redirect404 } from "../../utils/redirect";
+import { Redirect404 } from "../../utils/redirect";
 import { getJwt } from "../../utils/jwt";
 import Header from "../../components/Header";
 import { navItems } from "../../utils/constants";
@@ -31,7 +31,7 @@ const Messages = () => {
       setMessages(data);
       setIsLoading(false);
     } catch {
-      redirect404();
+      Redirect404();
     }
   }
 

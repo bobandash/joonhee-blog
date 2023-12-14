@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const {DateTime} = require('luxon');
+const { DateTime } = require("luxon");
 
 const Post = new Schema({
   title: {
@@ -13,32 +13,34 @@ const Post = new Schema({
   },
   summary: {
     type: String,
-    required: true
+    required: true,
   },
   timestamp: {
     type: Date,
-    default: () => Date.now()
+    default: () => Date.now(),
   },
   isVisible: {
     type: Boolean,
-    default: true
-  }
-})
+    default: true,
+  },
+});
 
-Post.virtual("dateFormatted").get(function(){
+Post.virtual("dateFormatted").get(function () {
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   if (userTimeZone) {
-    return formattedTimestamp = new Intl.DateTimeFormat('default', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: 'numeric',
-      minute: 'numeric',
-    }).format(this.timestamp);
+    console.log(userTimeZone);
+    return (formattedTimestamp = new Intl.DateTimeFormat("default", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "numeric",
+      minute: "numeric",
+      timeZone: userTimeZone,
+    }).format(this.timestamp));
   }
   return this.timestamp.toLocaleString(DateTime.DATE_MED);
-})
+});
 
-Post.set('toJSON', {virtuals: true})
+Post.set("toJSON", { virtuals: true });
 
 module.exports = mongoose.model("Post", Post);

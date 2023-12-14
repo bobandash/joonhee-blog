@@ -139,7 +139,9 @@ exports.add_image_to_server = [
   upload.single("image"),
   asyncHandler(async (req, res, next) => {
     const file = req.file;
+    console.log(file);
     const result = await s3Uploadsv2(file);
+    console.log(result);
     res.json({ data: { url: result } });
   }),
 ];

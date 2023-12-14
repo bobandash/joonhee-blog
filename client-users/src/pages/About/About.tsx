@@ -1,7 +1,7 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { Link } from "react-router-dom";
-import Joonhee from "../../assets/joonhee_image.jpeg";
+import JoonheeImage from "../../assets/joonhee_image.jpeg";
 import PageName from "../../components/PageName";
 
 const About = () => {
@@ -13,7 +13,7 @@ const About = () => {
         <div className="flex flex-col md:flex-row gap-3 md:gap-5">
           <img
             className="block md:max-w-[50%]"
-            src={Joonhee}
+            src={JoonheeImage}
             alt="joonhee picture"
             loading="eager"
           />

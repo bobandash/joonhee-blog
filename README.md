@@ -2,16 +2,15 @@
 ## Description:
 A full-stack web application made for my friend, who can use this blog to post his experiences in Kosovo for the Peace Corps. This was also conveniently done as a project in [The Odin Project]([url](https://www.theodinproject.com/lessons/nodejs-blog-api)). The code is separated into three folders (client-users, client-admin, and server), hosting the user side, admin side, and server backend, respectively.
 
+## Live View:
+- Admin-Side: https://joonhee.xyz
+- User-Side: https://joonheebockadmin.netlify.app/
+- Server: https://joonheebock.onrender.com
+
 ## Preview:
 ![image](https://github.com/bobandash/joonhee-blog/assets/74850332/e86f011a-7266-4c00-ad42-f295aea51308)
 
 https://github.com/bobandash/joonhee-blog/assets/74850332/780f2aba-2d7d-4e00-921b-660c96bf5cd5
-
-
-## Live View:
-- Admin-Side: https://joonheebockadmin.netlify.app/
-- User-Side: https://joonhee.xyz
-- Server: https://joonheebock.onrender.com
 
 ## Technologies Used:
 Front-End:
@@ -34,7 +33,7 @@ If I were to come back to this project in the future, I would want to:
 - Add Mailchimp integration to inform readers when he makes a new post
 - Refactor the project's css to only use tailwind
 - Preview Page for Joonhee to see how his page would look like before he hits post
-- refactor the ui of the admin site and change timestamp to local timezone instead of utc
+- refactor the UI of the admin site and change the timestamp to local timezone instead of UTC
 
 
 

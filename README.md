@@ -5,7 +5,7 @@ A full-stack web application made for my friend, who can use this blog to post h
 ## Preview:
 https://github.com/bobandash/joonhee-blog/assets/74850332/780f2aba-2d7d-4e00-921b-660c96bf5cd5
 
-https://github.com/bobandash/joonhee-blog/assets/74850332/7dc9d5c7-d2c4-4312-93fe-3ea720f060cf
+![image](https://github.com/bobandash/joonhee-blog/assets/74850332/e86f011a-7266-4c00-ad42-f295aea51308)
 
 
 ## Live View:

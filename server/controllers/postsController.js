@@ -6,15 +6,18 @@ const { body, validationResult } = require("express-validator");
 const verifyToken = require("../utils/verifyToken");
 const multer = require("multer");
 const path = require("path");
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + " " + file.originalname);
-  },
-});
-const upload = multer({ storage: storage });
+const { s3Uploadsv2 } = require("../s3Serve");
+const storage = multer.memoryStorage();
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype.split("/")[0] === "image") {
+    cb(null, true);
+  } else {
+    cb(new MulterError.MulterError("LIMIT_UNEXPECTED_FILE", false));
+  }
+};
+
+const upload = multer({ storage, fileFilter });
 
 exports.posts = asyncHandler(async (req, res, next) => {
   if (Object.keys(req.query).length > 0) {
@@ -135,8 +138,8 @@ exports.add_image_to_server = [
   verifyToken,
   upload.single("image"),
   asyncHandler(async (req, res, next) => {
-    const fullFilePath = req.file.path;
-    // TO-DO: change port
-    res.json({ data: { url: fullFilePath } });
+    const file = req.file;
+    const result = await s3Uploadsv2(file);
+    res.json({ data: { url: result } });
   }),
 ];

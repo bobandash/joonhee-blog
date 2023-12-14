@@ -55,14 +55,10 @@ const RichTextEditor: FC<RichTextEditorProps> = ({ handleChange, value }) => {
                   }
                 );
                 const data = await response.json();
-                const imageUrl = data.data.url;
+                const imageUrl = data.data.url.Location;
                 const range = editor.getSelection();
                 if (range !== null) {
-                  editor.insertEmbed(
-                    range.index,
-                    "image",
-                    `${import.meta.env.VITE_BACKEND_PORT}/${imageUrl}`
-                  );
+                  editor.insertEmbed(range.index, "image", imageUrl);
                 }
               }
             };

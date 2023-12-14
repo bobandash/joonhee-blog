@@ -7,6 +7,7 @@
     "devStart": "nodemon ./bin/www"
   },
   "dependencies": {
+    "aws-sdk": "^2.1518.0",
     "bad-words": "^3.0.4",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
@@ -27,6 +28,7 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta11",
+    "uuid": "^9.0.1",
     "validator": "^13.11.0"
   },
   "devDependencies": {

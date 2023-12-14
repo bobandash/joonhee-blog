@@ -10,15 +10,17 @@ https://github.com/bobandash/joonhee-blog/assets/74850332/7dc9d5c7-d2c4-4312-93f
 
 ## Live View:
 - Admin-Side: https://joonheebockadmin.netlify.app/
-- User-Side: https://joonheebock.netlify.app/
+- User-Side: https://joonhee.xyz
 - Server: https://joonheebock.onrender.com
 
 ## Technologies Used:
 Front-End:
 - React.JS
+- TailwindCSS
 Backend:
 - Express, Node.js
 - MongoDB
+- AWS S3 for image hosting
 
 ## Concepts Learned
 - Persistent Login using JWT tokens for Admin End
@@ -27,10 +29,10 @@ Backend:
 
 ## To-Do:
 If I were to come back to this project in the future, I would want to:
-- Design a better UI to replace the current UI with images taken in Kosovo
 - Add more features in the comments section (custom emojis and gifs)
 - Add a user login for Joonhee, in case he wants to personally reply to comments and mark his message
 - Add Mailchimp integration to inform readers when he makes a new post
+- Refactor the project's css to only use tailwind
 - Preview Page for Joonhee to see how his page would look like before he hits post
 
 

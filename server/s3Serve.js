@@ -13,7 +13,7 @@ exports.s3Uploadsv2 = async (file) => {
     };
     const result = await s3.upload(params).promise();
     return result;
-  } catch {
+  } catch (error) {
     console.error("Error during S3 upload:", error);
     throw Error;
   }

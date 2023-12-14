@@ -138,10 +138,15 @@ exports.add_image_to_server = [
   verifyToken,
   upload.single("image"),
   asyncHandler(async (req, res, next) => {
-    const file = req.file;
-    console.log(file);
-    const result = await s3Uploadsv2(file);
-    console.log(result);
-    res.json({ data: { url: result } });
+    try {
+      const file = req.file;
+      console.log(file);
+      const result = await s3Uploadsv2(file);
+      console.log(result);
+      res.json({ data: { url: result } });
+    } catch (error) {
+      console.error("Error during image upload:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
   }),
 ];

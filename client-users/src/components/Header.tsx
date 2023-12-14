@@ -1,22 +1,34 @@
+import { Link } from "react-router-dom";
 
-import styles from './Header.module.css'
-import JoonheeLogo from '../assets/joonhee-logo.svg'
-
-function Header(){
+function Header() {
   return (
-    <header className = {styles["header"]}>
-      <div className = {styles["container"]}>
-        <p className = {styles["name"]}>
-          <a className = {styles["home-redirect"]} href = "/"><img className = {styles["joonhee-logo"]} src = {JoonheeLogo} alt = "Joonhee logo" /></a>
+    <header className="md:py-8 bg-black text-white">
+      <div className="relative flex flex-col md:flex-row uppercase justify-center md:justify-between text-2xl md:w-[90%] mx-auto">
+        <p className="text-center py-2 md:py-0">
+          <Link className="hover:text-kosovo_gold" to="/">
+            Joonhee Bock
+          </Link>
         </p>
-        <ul className = {styles["nav-items"]}>
-          <li><a href="/about">About</a></li>
-          <li><a href="/posts">Posts</a></li>
-          <li><a href="/contact">Contact</a></li>
+        <ul className="py-3 md:py-0 flex-row gap-7 flex text-sm md:text-xl justify-around bg-kosovo md:bg-black">
+          <li>
+            <Link to="/about" className="hover:text-kosovo_gold">
+              About
+            </Link>
+          </li>
+          <li>
+            <Link to="/posts" className="hover:text-kosovo_gold">
+              Posts
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" className="hover:text-kosovo_gold">
+              Contact
+            </Link>
+          </li>
         </ul>
       </div>
     </header>
-  )
+  );
 }
 
 export default Header;

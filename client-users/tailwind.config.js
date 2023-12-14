@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         kosovo: "rgb(36, 74, 165)",
+        kosovo_gold: "#d0a650",
       },
     },
   },

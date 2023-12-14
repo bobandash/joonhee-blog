@@ -6,7 +6,7 @@
 html,
 body {
   margin: 0;
-  background-color: #f6f6f6;
+  background-color: #f1f1f1;
 }
 
 #root {
@@ -28,12 +28,10 @@ body {
 
 .error {
   color: red;
-  margin: 0;
 }
 
 .success {
   color: green;
-  margin: 0;
 }
 
 .section-title {
@@ -68,11 +66,18 @@ body {
 
 .button-stroke {
   display: block;
-  width: calc(100% - 40px);
-  height: 20px;
-  stroke: yellow;
+  width: calc(100%);
+  height: 25px;
+  stroke: #d0a650;
   position: absolute;
-  left: 20px;
-  bottom: -10px;
+  left: 10px;
+  bottom: -20px;
   stroke-width: 4;
+}
+
+.button-stoke > * {
+  stroke-dasharray: 650px;
+  stroke-dashoffset: 650px;
+  stroke: darken(#263238, 10%);
+  stroke-width: 5;
 }

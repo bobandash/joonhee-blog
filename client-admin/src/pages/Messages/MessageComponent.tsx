@@ -1,6 +1,6 @@
 import { FC } from "react";
 import he from "he";
-import MessageProps from "./interface/messageProps";
+import MessageProps from "./interface/MessageProps";
 import styles from "./Message.module.css";
 
 interface MessageComponentProps {

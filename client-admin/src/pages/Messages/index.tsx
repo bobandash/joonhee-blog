@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import { navItems } from "../../utils/constants";
 import Footer from "../../components/Footer";
 import LoadingDiv from "../../components/LoadingScreen";
-import MessageProps from "./interface/messageProps";
+import MessageProps from "./interface/MessageProps";
 import MessageComponent from "./MessageComponent";
 
 const Messages = () => {

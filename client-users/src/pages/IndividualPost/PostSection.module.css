@@ -1,13 +1,12 @@
 .post {
-  margin-top: 40px;
   margin-bottom: 50px;
-  background-color: #f6f6f6;
+  background-color: #f1f1f1;
 }
 
 .title {
   font-size: 42px;
   margin: 0px;
-  color: #244AA5;
+  color: #244aa5;
   line-height: 42px;
 }
 
@@ -21,7 +20,7 @@
 
 .author a:hover {
   text-decoration: underline;
-  color: #D0A650;
+  color: #d0a650;
 }
 
 .date {
@@ -37,7 +36,7 @@
 }
 
 .post-contents p {
-  font-size: 18px; 
+  font-size: 18px;
 }
 
 .post-contents h1 {
@@ -61,6 +60,7 @@
     padding: 30px 10%;
     border-radius: 30px;
     background-color: white;
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -4px rgba(0, 0, 0, 0.1);
   }
 }

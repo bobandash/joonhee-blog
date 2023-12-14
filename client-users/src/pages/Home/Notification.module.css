@@ -1,5 +1,5 @@
 .section-background {
-  background-color: #244AA5;
+  background-color: #244aa5;
   display: flex;
   align-items: center;
 }
@@ -14,12 +14,13 @@
 }
 
 .email-newsletter label {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   color: white;
-  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
+    2px 2px 0 #000;
   text-transform: uppercase;
 }
 
@@ -35,10 +36,6 @@
   overflow: hidden;
 }
 
-.input-and-button button {
-
-}
-
 .input-and-button input {
   flex-grow: 1;
   padding-left: 6px;
@@ -49,7 +46,7 @@
 }
 
 .input-and-button button {
-  background-color: #D0A650;
+  background-color: #d0a650;
   color: white;
   padding: 5px 16px;
   min-width: fit-content;
@@ -60,7 +57,7 @@
 }
 
 .message {
-  align-self: flex-start; 
+  align-self: flex-start;
 }
 
 .form-elem-container {

@@ -9,7 +9,7 @@ interface CommentProps {
 
 const CommentComponent: FC<CommentProps> = ({ comment }) => {
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  console.log(userTimeZone);
+  const commentDate = new Date(comment.timestamp);
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "2-digit",
@@ -17,7 +17,7 @@ const CommentComponent: FC<CommentProps> = ({ comment }) => {
     hour: "numeric",
     minute: "numeric",
     timeZone: userTimeZone || "UTC",
-  }).format(comment.timestamp);
+  }).format(commentDate);
 
   return (
     <div className={styles["comment-wrapper"]}>

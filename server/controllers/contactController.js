@@ -18,3 +18,8 @@ exports.create_message = [
     }
   }),
 ];
+
+exports.get_all_messages = asyncHandler(async (req, res, next) => {
+  const messages = await ContactMessages.find({}).exec();
+  res.json(messages);
+});

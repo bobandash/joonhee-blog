@@ -1,5 +1,6 @@
 export const navItems = {
-  POSTS: 'posts',
-  COMMENTS: 'comments',
-  LOGOUT: 'logout'
-}
+  POSTS: "posts",
+  COMMENTS: "comments",
+  LOGOUT: "logout",
+  MESSAGES: "messages",
+};

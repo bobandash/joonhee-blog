@@ -34,7 +34,6 @@ If I were to come back to this project in the future, I would want to:
 - Add Mailchimp integration to inform readers when he makes a new post
 - Refactor the project's css to only use tailwind
 - Preview Page for Joonhee to see how his page would look like before he hits post
-- refactor the UI of the admin site and change the timestamp to local timezone instead of UTC
 
 
 

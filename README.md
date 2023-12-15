@@ -16,6 +16,7 @@ https://github.com/bobandash/joonhee-blog/assets/74850332/780f2aba-2d7d-4e00-921
 Front-End:
 - React.JS
 - TailwindCSS
+  
 Backend:
 - Express, Node.js
 - MongoDB

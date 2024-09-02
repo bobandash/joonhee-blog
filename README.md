@@ -1,5 +1,7 @@
 # Blog For A Friend
-A full-stack web application made for my friend, who can use this blog to post his experiences in Kosovo for the Peace Corps. This was also conveniently done as a project in [The Odin Project]([url](https://www.theodinproject.com/lessons/nodejs-blog-api)). The code is separated into three folders (client-users, client-admin, and server), hosting the user side, admin side, and server backend, respectively. NOTE: The posts may load slowly because the backend is hosted on a free PaaS, which takes time to spin up.
+A full-stack web application made for my friend, who can use this blog to post his experiences in Kosovo for the Peace Corps. This was also conveniently done as a project in [The Odin Project]([url](https://www.theodinproject.com/lessons/nodejs-blog-api)). The code is separated into three folders (client-users, client-admin, and server), hosting the user side, admin side, and server backend, respectively. 
+
+**NOTE: The posts may load slowly because the backend is hosted on a free PaaS, which takes time to spin up.**
 
 ## Technologies Used:
 Front-End:
